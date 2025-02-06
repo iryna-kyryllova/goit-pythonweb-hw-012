@@ -42,7 +42,7 @@ async def create_contact(body: ContactBase, db: AsyncSession = Depends(get_db), 
 
 
 @router.put(
-    "/{contact_id}", response_model=ContactResponse, status_code=status.HTTP_201_CREATED
+    "/{contact_id}", response_model=ContactResponse, status_code=status.HTTP_200_OK
 )
 async def update_contact(
     body: ContactBase, contact_id: int, db: AsyncSession = Depends(get_db), user: User = Depends(get_current_user)
