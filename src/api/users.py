@@ -6,6 +6,7 @@ from src.schemas.users import User
 from src.services.auth import get_current_user
 from src.services.users import UserService
 from src.services.upload_file import UploadFileService
+from src.conf import messages
 from src.conf.config import settings
 from src.database.db import get_db
 
@@ -14,7 +15,7 @@ limiter = Limiter(key_func=get_remote_address)
 
 
 @router.get(
-    "/me", response_model=User, description="No more than 5 requests per minute"
+    "/me", response_model=User, description=messages.REQUESTS_LIMIT
 )
 @limiter.limit("5/minute")
 async def me(request: Request, user: User = Depends(get_current_user)):

@@ -9,3 +9,4 @@ EMAIL_ALREADY_CONFIRMED = "Ваша електронна пошта вже пі�
 EMAIL_CONFIRMED = "Електронну пошту підтверджено"
 CHECK_EMAIL = "Перевірте свою електронну пошту для підтвердження"
 VERIFICATION_ERROR = "Verification error"
+REQUESTS_LIMIT = "No more than 5 requests per minute"
