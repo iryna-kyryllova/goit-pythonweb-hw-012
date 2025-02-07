@@ -6,7 +6,7 @@ authors = [
     {name = "Iryna Kyryllova",email = "keira.kirillova@gmail.com"}
 ]
 readme = "README.md"
-requires-python = ">=3.9,<4.0"
+requires-python = ">=3.10,<4.0"
 dependencies = [
     "asyncpg (>=0.30.0,<0.31.0)",
     "black (>=24.10.0,<25.0.0)",
@@ -37,4 +37,8 @@ build-backend = "poetry.core.masonry.api"
 pythonpath = "."
 filterwarnings = "ignore::DeprecationWarning"
 asyncio_default_fixture_loop_scope = "function"
+
+
+[tool.poetry.group.dev.dependencies]
+sphinx = "^8.1.3"
 
