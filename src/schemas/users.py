@@ -1,10 +1,15 @@
-from datetime import datetime, date
-from typing import Optional
-from pydantic import BaseModel, Field, ConfigDict, EmailStr, field_validator
+from pydantic import BaseModel, ConfigDict, EmailStr
+
+"""
+Defines Pydantic schemas for user-related operations.
+"""
 
 
-# Схема користувача
 class User(BaseModel):
+    """
+    Schema for returning user information.
+    """
+
     id: int
     username: str
     email: str
@@ -13,19 +18,28 @@ class User(BaseModel):
     model_config = ConfigDict(from_attributes=True)
 
 
-# Схема для запиту реєстрації
 class UserCreate(BaseModel):
+    """
+    Schema for user registration request.
+    """
+
     username: str
     email: str
     password: str
 
 
-# Схема для токену
 class Token(BaseModel):
+    """
+    Schema for authentication token response.
+    """
+
     access_token: str
     token_type: str
 
 
 class RequestEmail(BaseModel):
-    email: EmailStr
+    """
+    Schema for requesting email verification.
+    """
 
+    email: EmailStr
