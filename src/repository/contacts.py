@@ -12,6 +12,7 @@ class ContactRepository:
     """
     Handles database operations for the Contact model.
     """
+
     def __init__(self, session: AsyncSession):
         """
         Initialize a ContactRepository.

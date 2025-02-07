@@ -109,3 +109,20 @@ class UserService:
             await cache.set_user(user)
 
         return user
+
+    async def update_password(self, email: str, new_hashed_password: str):
+        """
+        Update the password for a user.
+
+        Args:
+            email: The email address of the user whose password is being updated.
+            new_password: The new password to be set.
+
+        Returns:
+            The updated User object.
+        """
+        user = await self.repository.get_user_by_email(email)
+        if user:
+            user.hashed_password = new_hashed_password
+            await self.repository.db.commit()
+        return user

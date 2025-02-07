@@ -8,7 +8,7 @@ from sqlalchemy.sql.sqltypes import DateTime, Date
 class Base(DeclarativeBase):
     """
     Base model class for all database tables, providing created_at and updated_at timestamps.
-    
+
     Attributes:
         metadata: SQLAlchemy metadata object used for database schema definitions.
     """

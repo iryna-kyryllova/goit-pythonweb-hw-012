@@ -2,9 +2,14 @@ from fastapi import APIRouter, HTTPException, Depends, status, BackgroundTasks, 
 from sqlalchemy.orm import Session
 from fastapi.security import OAuth2PasswordRequestForm
 from src.schemas.users import UserCreate, Token, User, RequestEmail
-from src.services.auth import create_access_token, Hash, get_email_from_token
+from src.services.auth import (
+    create_access_token,
+    Hash,
+    get_email_from_token,
+    get_email_from_reset_token,
+)
 from src.services.users import UserService
-from src.services.email import send_email
+from src.services.email import send_email, send_reset_password_email
 from src.database.db import get_db
 from src.conf import messages
 
@@ -53,7 +58,6 @@ async def register_user(
     return new_user
 
 
-# Логін користувача
 @router.post("/login", response_model=Token)
 async def login_user(
     form_data: OAuth2PasswordRequestForm = Depends(), db: Session = Depends(get_db)
@@ -139,3 +143,74 @@ async def request_email(
             send_email, user.email, user.username, request.base_url
         )
     return {"message": messages.CHECK_EMAIL}
+
+
+@router.post("/forgot-password")
+async def forgot_password(
+    body: RequestEmail,
+    background_tasks: BackgroundTasks,
+    request: Request,
+    db: Session = Depends(get_db),
+):
+    """
+    Initiate the password reset process by sending a reset link to the user's email.
+
+    Args:
+        body: RequestEmail object containing the user's email.
+        background_tasks: BackgroundTasks instance for sending the reset password email.
+        request: Request object for base URL access.
+        db: Database session dependency.
+
+    Returns:
+        A message indicating that the reset link has been sent.
+
+    Raises:
+        HTTPException: If the user is not found.
+    """
+    user_service = UserService(db)
+    user = await user_service.get_user_by_email(body.email)
+
+    if not user:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND, detail=messages.CONTACT_NOT_FOUND
+        )
+
+    background_tasks.add_task(
+        send_reset_password_email, user.email, user.username, request.base_url
+    )
+
+    return {"message": messages.INSTRUCTION_RESET_PASSWORD}
+
+
+@router.post("/reset-password")
+async def reset_password(
+    token: str,
+    new_password: str,
+    db: Session = Depends(get_db),
+):
+    """
+    Reset the user's password using the provided token.
+
+    Args:
+        body: ResetPassword object containing the reset token and new password.
+        db: Database session dependency.
+
+    Returns:
+        A success message confirming that the password has been reset.
+
+    Raises:
+        HTTPException: If the token is invalid or the user is not found.
+    """
+    email = await get_email_from_reset_token(token)
+    user_service = UserService(db)
+    user = await user_service.get_user_by_email(email)
+
+    if not user:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND, detail=messages.CONTACT_NOT_FOUND
+        )
+
+    hashed_password = Hash().get_password_hash(new_password)
+    await user_service.update_password(user.email, hashed_password)
+
+    return {"message": messages.PASSWORD_CHANGED}

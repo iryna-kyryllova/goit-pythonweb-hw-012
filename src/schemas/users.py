@@ -43,3 +43,20 @@ class RequestEmail(BaseModel):
     """
 
     email: EmailStr
+
+
+class ResetPasswordRequest(BaseModel):
+    """
+    Schema for requesting a password reset.
+    """
+
+    email: EmailStr
+
+
+class ResetPassword(BaseModel):
+    """
+    Schema for resetting the password using a token.
+    """
+
+    token: str
+    new_password: str
