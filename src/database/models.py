@@ -6,6 +6,10 @@ from sqlalchemy.sql.sqltypes import DateTime, Date
 
 
 class Base(DeclarativeBase):
+    """
+    Base model class for all database tables, providing created_at and updated_at timestamps.
+    """
+
     created_at: Mapped[datetime] = mapped_column(
         "created_at", DateTime, default=func.now()
     )
@@ -15,6 +19,10 @@ class Base(DeclarativeBase):
 
 
 class Contact(Base):
+    """
+    Represents a contact entity in the database.
+    """
+
     __tablename__ = "contacts"
     id: Mapped[int] = mapped_column(Integer, primary_key=True)
     first_name: Mapped[str] = mapped_column(String(50), nullable=False)
@@ -28,7 +36,12 @@ class Contact(Base):
     )
     user = relationship("User", backref="contacts")
 
+
 class User(Base):
+    """
+    Represents a user entity in the database.
+    """
+
     __tablename__ = "users"
     id = Column(Integer, primary_key=True)
     username = Column(String, unique=True)

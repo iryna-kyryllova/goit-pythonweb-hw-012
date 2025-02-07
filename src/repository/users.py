@@ -6,6 +6,9 @@ from src.schemas.users import UserCreate
 
 
 class UserRepository:
+    """
+    Handles database operations for the User model.
+    """
     def __init__(self, session: AsyncSession):
         """
         Initialize a UserRepository.
