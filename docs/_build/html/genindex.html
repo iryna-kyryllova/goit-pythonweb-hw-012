@@ -43,7 +43,9 @@
  | <a href="#E"><strong>E</strong></a>
  | <a href="#F"><strong>F</strong></a>
  | <a href="#G"><strong>G</strong></a>
+ | <a href="#H"><strong>H</strong></a>
  | <a href="#I"><strong>I</strong></a>
+ | <a href="#J"><strong>J</strong></a>
  | <a href="#L"><strong>L</strong></a>
  | <a href="#M"><strong>M</strong></a>
  | <a href="#P"><strong>P</strong></a>
@@ -79,7 +81,19 @@
 <h2 id="C">C</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="index.html#src.conf.config.Settings.CLD_API_KEY">CLD_API_KEY (src.conf.config.Settings attribute)</a>
+</li>
+      <li><a href="index.html#src.conf.config.Settings.CLD_API_SECRET">CLD_API_SECRET (src.conf.config.Settings attribute)</a>
+</li>
+      <li><a href="index.html#src.conf.config.Settings.CLD_NAME">CLD_NAME (src.conf.config.Settings attribute)</a>
+</li>
       <li><a href="index.html#src.repository.users.UserRepository.confirmed_email">confirmed_email() (src.repository.users.UserRepository method)</a>
+
+      <ul>
+        <li><a href="index.html#src.services.users.UserService.confirmed_email">(src.services.users.UserService method)</a>
+</li>
+      </ul></li>
+      <li><a href="index.html#src.services.cache.RedisCache.connect">connect() (src.services.cache.RedisCache method)</a>
 </li>
       <li><a href="index.html#src.schemas.contacts.ContactBase">ContactBase (class in src.schemas.contacts)</a>
 </li>
@@ -87,11 +101,13 @@
 </li>
       <li><a href="index.html#src.repository.contacts.ContactRepository">ContactRepository (class in src.repository.contacts)</a>
 </li>
-      <li><a href="index.html#src.schemas.contacts.ContactResponse">ContactResponse (class in src.schemas.contacts)</a>
-</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="index.html#src.schemas.contacts.ContactResponse">ContactResponse (class in src.schemas.contacts)</a>
+</li>
       <li><a href="index.html#src.services.contacts.ContactService">ContactService (class in src.services.contacts)</a>
+</li>
+      <li><a href="index.html#src.services.auth.create_access_token">create_access_token() (in module src.services.auth)</a>
 </li>
       <li><a href="index.html#src.repository.contacts.ContactRepository.create_contact">create_contact() (src.repository.contacts.ContactRepository method)</a>
 
@@ -99,8 +115,14 @@
         <li><a href="index.html#src.services.contacts.ContactService.create_contact">(src.services.contacts.ContactService method)</a>
 </li>
       </ul></li>
-      <li><a href="index.html#src.repository.users.UserRepository.create_user">create_user() (src.repository.users.UserRepository method)</a>
+      <li><a href="index.html#src.services.auth.create_email_token">create_email_token() (in module src.services.auth)</a>
 </li>
+      <li><a href="index.html#src.repository.users.UserRepository.create_user">create_user() (src.repository.users.UserRepository method)</a>
+
+      <ul>
+        <li><a href="index.html#src.services.users.UserService.create_user">(src.services.users.UserService method)</a>
+</li>
+      </ul></li>
       <li><a href="index.html#src.schemas.contacts.ContactResponse.created_at">created_at (src.schemas.contacts.ContactResponse attribute)</a>
 </li>
   </ul></td>
@@ -109,7 +131,15 @@
 <h2 id="D">D</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="index.html#src.database.db.DatabaseSessionManager">DatabaseSessionManager (class in src.database.db)</a>
+</li>
       <li><a href="index.html#src.schemas.contacts.ContactBirthdayRequest.days">days (src.schemas.contacts.ContactBirthdayRequest attribute)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="index.html#src.conf.config.Settings.DB_URL">DB_URL (src.conf.config.Settings attribute)</a>
+</li>
+      <li><a href="index.html#src.services.cache.RedisCache.delete_user">delete_user() (src.services.cache.RedisCache method)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -151,20 +181,50 @@
         <li><a href="index.html#src.services.contacts.ContactService.get_contacts">(src.services.contacts.ContactService method)</a>
 </li>
       </ul></li>
+      <li><a href="index.html#src.services.auth.get_current_user">get_current_user() (in module src.services.auth)</a>
+</li>
+      <li><a href="index.html#src.database.db.get_db">get_db() (in module src.database.db)</a>
+</li>
+      <li><a href="index.html#src.services.auth.get_email_from_token">get_email_from_token() (in module src.services.auth)</a>
+</li>
+      <li><a href="index.html#src.services.auth.Hash.get_password_hash">get_password_hash() (src.services.auth.Hash method)</a>
+</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="index.html#src.services.cache.RedisCache.get_user">get_user() (src.services.cache.RedisCache method)</a>
+</li>
       <li><a href="index.html#src.repository.users.UserRepository.get_user_by_email">get_user_by_email() (src.repository.users.UserRepository method)</a>
+
+      <ul>
+        <li><a href="index.html#src.services.users.UserService.get_user_by_email">(src.services.users.UserService method)</a>
 </li>
+      </ul></li>
       <li><a href="index.html#src.repository.users.UserRepository.get_user_by_id">get_user_by_id() (src.repository.users.UserRepository method)</a>
+
+      <ul>
+        <li><a href="index.html#src.services.users.UserService.get_user_by_id">(src.services.users.UserService method)</a>
 </li>
+      </ul></li>
       <li><a href="index.html#src.repository.users.UserRepository.get_user_by_username">get_user_by_username() (src.repository.users.UserRepository method)</a>
+
+      <ul>
+        <li><a href="index.html#src.services.users.UserService.get_user_by_username">(src.services.users.UserService method)</a>
 </li>
+      </ul></li>
       <li><a href="index.html#src.repository.contacts.ContactRepository.get_week_birthdays">get_week_birthdays() (src.repository.contacts.ContactRepository method)</a>
 
       <ul>
         <li><a href="index.html#src.services.contacts.ContactService.get_week_birthdays">(src.services.contacts.ContactService method)</a>
 </li>
       </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="H">H</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="index.html#src.services.auth.Hash">Hash (class in src.services.auth)</a>
+</li>
   </ul></td>
 </tr></table>
 
@@ -180,10 +240,28 @@
   </ul></td>
 </tr></table>
 
+<h2 id="J">J</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="index.html#src.conf.config.Settings.JWT_ALGORITHM">JWT_ALGORITHM (src.conf.config.Settings attribute)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="index.html#src.conf.config.Settings.JWT_EXPIRATION_SECONDS">JWT_EXPIRATION_SECONDS (src.conf.config.Settings attribute)</a>
+</li>
+      <li><a href="index.html#src.conf.config.Settings.JWT_SECRET">JWT_SECRET (src.conf.config.Settings attribute)</a>
+</li>
+  </ul></td>
+</tr></table>
+
 <h2 id="L">L</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="index.html#src.schemas.contacts.ContactBase.last_name">last_name (src.schemas.contacts.ContactBase attribute)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="index.html#main.lifespan">lifespan() (in module main)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -191,9 +269,34 @@
 <h2 id="M">M</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="index.html#src.schemas.contacts.ContactBase.model_config">model_config (src.schemas.contacts.ContactBase attribute)</a>
+      <li><a href="index.html#src.conf.config.Settings.MAIL_FROM">MAIL_FROM (src.conf.config.Settings attribute)</a>
+</li>
+      <li><a href="index.html#src.conf.config.Settings.MAIL_FROM_NAME">MAIL_FROM_NAME (src.conf.config.Settings attribute)</a>
+</li>
+      <li><a href="index.html#src.conf.config.Settings.MAIL_PASSWORD">MAIL_PASSWORD (src.conf.config.Settings attribute)</a>
+</li>
+      <li><a href="index.html#src.conf.config.Settings.MAIL_PORT">MAIL_PORT (src.conf.config.Settings attribute)</a>
+</li>
+      <li><a href="index.html#src.conf.config.Settings.MAIL_SERVER">MAIL_SERVER (src.conf.config.Settings attribute)</a>
+</li>
+      <li><a href="index.html#src.conf.config.Settings.MAIL_SSL_TLS">MAIL_SSL_TLS (src.conf.config.Settings attribute)</a>
+</li>
+      <li><a href="index.html#src.conf.config.Settings.MAIL_STARTTLS">MAIL_STARTTLS (src.conf.config.Settings attribute)</a>
+</li>
+      <li><a href="index.html#src.conf.config.Settings.MAIL_USERNAME">MAIL_USERNAME (src.conf.config.Settings attribute)</a>
+</li>
+      <li>
+    main
 
       <ul>
+        <li><a href="index.html#module-main">module</a>
+</li>
+      </ul></li>
+      <li><a href="index.html#src.conf.config.Settings.model_config">model_config (src.conf.config.Settings attribute)</a>
+
+      <ul>
+        <li><a href="index.html#src.schemas.contacts.ContactBase.model_config">(src.schemas.contacts.ContactBase attribute)</a>
+</li>
         <li><a href="index.html#src.schemas.contacts.ContactBirthdayRequest.model_config">(src.schemas.contacts.ContactBirthdayRequest attribute)</a>
 </li>
         <li><a href="index.html#src.schemas.contacts.ContactResponse.model_config">(src.schemas.contacts.ContactResponse attribute)</a>
@@ -213,6 +316,12 @@
     module
 
       <ul>
+        <li><a href="index.html#module-main">main</a>
+</li>
+        <li><a href="index.html#module-src.conf.config">src.conf.config</a>
+</li>
+        <li><a href="index.html#module-src.database.db">src.database.db</a>
+</li>
         <li><a href="index.html#module-src.repository.contacts">src.repository.contacts</a>
 </li>
         <li><a href="index.html#module-src.repository.users">src.repository.users</a>
@@ -221,9 +330,17 @@
 </li>
         <li><a href="index.html#module-src.schemas.users">src.schemas.users</a>
 </li>
+        <li><a href="index.html#module-src.services.auth">src.services.auth</a>
+</li>
+        <li><a href="index.html#module-src.services.cache">src.services.cache</a>
+</li>
         <li><a href="index.html#module-src.services.contacts">src.services.contacts</a>
 </li>
+        <li><a href="index.html#module-src.services.email">src.services.email</a>
+</li>
         <li><a href="index.html#module-src.services.upload_file">src.services.upload_file</a>
+</li>
+        <li><a href="index.html#module-src.services.users">src.services.users</a>
 </li>
       </ul></li>
   </ul></td>
@@ -238,21 +355,35 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="index.html#src.schemas.contacts.ContactBase.phone_number">phone_number (src.schemas.contacts.ContactBase attribute)</a>
 </li>
+      <li><a href="index.html#src.services.auth.Hash.pwd_context">pwd_context (src.services.auth.Hash attribute)</a>
+</li>
   </ul></td>
 </tr></table>
 
 <h2 id="R">R</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="index.html#main.rate_limit_handler">rate_limit_handler() (in module main)</a>
+</li>
+      <li><a href="index.html#src.conf.config.Settings.REDIS_DB">REDIS_DB (src.conf.config.Settings attribute)</a>
+</li>
+      <li><a href="index.html#src.conf.config.Settings.REDIS_HOST">REDIS_HOST (src.conf.config.Settings attribute)</a>
+</li>
+      <li><a href="index.html#src.conf.config.Settings.REDIS_PORT">REDIS_PORT (src.conf.config.Settings attribute)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="index.html#src.services.cache.RedisCache">RedisCache (class in src.services.cache)</a>
+</li>
       <li><a href="index.html#src.repository.contacts.ContactRepository.remove_contact">remove_contact() (src.repository.contacts.ContactRepository method)</a>
 
       <ul>
         <li><a href="index.html#src.services.contacts.ContactService.remove_contact">(src.services.contacts.ContactService method)</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="index.html#src.schemas.users.RequestEmail">RequestEmail (class in src.schemas.users)</a>
+</li>
+      <li><a href="index.html#main.root">root() (in module main)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -264,6 +395,28 @@
 
       <ul>
         <li><a href="index.html#src.services.contacts.ContactService.search_contacts">(src.services.contacts.ContactService method)</a>
+</li>
+      </ul></li>
+      <li><a href="index.html#src.services.email.send_email">send_email() (in module src.services.email)</a>
+</li>
+      <li><a href="index.html#src.database.db.DatabaseSessionManager.session">session() (src.database.db.DatabaseSessionManager method)</a>
+</li>
+      <li><a href="index.html#src.services.cache.RedisCache.set_user">set_user() (src.services.cache.RedisCache method)</a>
+</li>
+      <li><a href="index.html#src.conf.config.Settings">Settings (class in src.conf.config)</a>
+</li>
+      <li>
+    src.conf.config
+
+      <ul>
+        <li><a href="index.html#module-src.conf.config">module</a>
+</li>
+      </ul></li>
+      <li>
+    src.database.db
+
+      <ul>
+        <li><a href="index.html#module-src.database.db">module</a>
 </li>
       </ul></li>
       <li>
@@ -297,6 +450,20 @@
 </li>
       </ul></li>
       <li>
+    src.services.auth
+
+      <ul>
+        <li><a href="index.html#module-src.services.auth">module</a>
+</li>
+      </ul></li>
+      <li>
+    src.services.cache
+
+      <ul>
+        <li><a href="index.html#module-src.services.cache">module</a>
+</li>
+      </ul></li>
+      <li>
     src.services.contacts
 
       <ul>
@@ -304,10 +471,24 @@
 </li>
       </ul></li>
       <li>
+    src.services.email
+
+      <ul>
+        <li><a href="index.html#module-src.services.email">module</a>
+</li>
+      </ul></li>
+      <li>
     src.services.upload_file
 
       <ul>
         <li><a href="index.html#module-src.services.upload_file">module</a>
+</li>
+      </ul></li>
+      <li>
+    src.services.users
+
+      <ul>
+        <li><a href="index.html#module-src.services.users">module</a>
 </li>
       </ul></li>
   </ul></td>
@@ -329,7 +510,11 @@
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="index.html#src.repository.users.UserRepository.update_avatar_url">update_avatar_url() (src.repository.users.UserRepository method)</a>
+
+      <ul>
+        <li><a href="index.html#src.services.users.UserService.update_avatar_url">(src.services.users.UserService method)</a>
 </li>
+      </ul></li>
       <li><a href="index.html#src.repository.contacts.ContactRepository.update_contact">update_contact() (src.repository.contacts.ContactRepository method)</a>
 
       <ul>
@@ -340,9 +525,11 @@
 </li>
       <li><a href="index.html#src.services.upload_file.UploadFileService.upload_file">upload_file() (src.services.upload_file.UploadFileService static method)</a>
 </li>
+      <li><a href="index.html#src.services.upload_file.UploadFileService">UploadFileService (class in src.services.upload_file)</a>
+</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="index.html#src.services.upload_file.UploadFileService">UploadFileService (class in src.services.upload_file)</a>
+      <li><a href="index.html#src.conf.config.Settings.USE_CREDENTIALS">USE_CREDENTIALS (src.conf.config.Settings attribute)</a>
 </li>
       <li><a href="index.html#src.schemas.users.User">User (class in src.schemas.users)</a>
 </li>
@@ -356,6 +543,8 @@
       </ul></li>
       <li><a href="index.html#src.repository.users.UserRepository">UserRepository (class in src.repository.users)</a>
 </li>
+      <li><a href="index.html#src.services.users.UserService">UserService (class in src.services.users)</a>
+</li>
   </ul></td>
 </tr></table>
 
@@ -363,6 +552,12 @@
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="index.html#src.schemas.contacts.ContactBase.validate_birthday">validate_birthday() (src.schemas.contacts.ContactBase class method)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="index.html#src.conf.config.Settings.VALIDATE_CERTS">VALIDATE_CERTS (src.conf.config.Settings attribute)</a>
+</li>
+      <li><a href="index.html#src.services.auth.Hash.verify_password">verify_password() (src.services.auth.Hash method)</a>
 </li>
   </ul></td>
 </tr></table>
