@@ -13,12 +13,35 @@ from src.services.users import UserService
 
 
 class Hash:
+    """
+    Utility class for password hashing and verification using bcrypt.
+    """
+
     pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
     def verify_password(self, plain_password, hashed_password):
+        """
+        Verify a plain text password against a hashed password.
+
+        Args:
+            plain_password: The plain text password.
+            hashed_password: The hashed password to compare against.
+
+        Returns:
+            True if passwords match, otherwise False.
+        """
         return self.pwd_context.verify(plain_password, hashed_password)
 
     def get_password_hash(self, password: str):
+        """
+        Hash a password using bcrypt.
+
+        Args:
+            password: The plain text password to hash.
+
+        Returns:
+            The hashed password string.
+        """
         return self.pwd_context.hash(password)
 
 
@@ -27,6 +50,16 @@ oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/api/auth/login")
 
 # define a function to generate a new access token
 async def create_access_token(data: dict, expires_delta: Optional[int] = None):
+    """
+    Generate a new JWT access token.
+
+    Args:
+        data: The data to encode in the token.
+        expires_delta: Optional expiration time in seconds.
+
+    Returns:
+        Encoded JWT token as a string.
+    """
     to_encode = data.copy()
     if expires_delta:
         expire = datetime.now(UTC) + timedelta(seconds=expires_delta)
@@ -42,6 +75,19 @@ async def create_access_token(data: dict, expires_delta: Optional[int] = None):
 async def get_current_user(
     token: str = Depends(oauth2_scheme), db: Session = Depends(get_db)
 ):
+    """
+    Retrieve the current authenticated user from the JWT token.
+
+    Args:
+        token: OAuth2 access token.
+        db: Database session dependency.
+
+    Returns:
+        The authenticated User object.
+
+    Raises:
+        HTTPException: If the token is invalid or user is not found.
+    """
     credentials_exception = HTTPException(
         status_code=status.HTTP_401_UNAUTHORIZED,
         detail="Could not validate credentials",
@@ -66,6 +112,15 @@ async def get_current_user(
 
 
 def create_email_token(data: dict):
+    """
+    Create an email verification token.
+
+    Args:
+        data: The data to encode in the token.
+
+    Returns:
+        Encoded JWT token as a string.
+    """
     to_encode = data.copy()
     expire = datetime.now(UTC) + timedelta(days=7)
     to_encode.update({"iat": datetime.now(UTC), "exp": expire})
@@ -74,6 +129,18 @@ def create_email_token(data: dict):
 
 
 async def get_email_from_token(token: str):
+    """
+    Extract the email from an email verification token.
+
+    Args:
+        token: JWT token containing the email.
+
+    Returns:
+        The extracted email string.
+
+    Raises:
+        HTTPException: If the token is invalid.
+    """
     try:
         payload = jwt.decode(
             token, settings.JWT_SECRET, algorithms=[settings.JWT_ALGORITHM]
@@ -85,5 +152,3 @@ async def get_email_from_token(token: str):
             status_code=status.HTTP_422_UNPROCESSABLE_ENTITY,
             detail="Неправильний токен для перевірки електронної пошти",
         )
-
-
