@@ -3,6 +3,7 @@ from libgravatar import Gravatar
 
 from src.repository.users import UserRepository
 from src.schemas.users import UserCreate
+from src.services.cache import cache
 
 
 class UserService:
@@ -36,7 +37,12 @@ class UserService:
         except Exception as e:
             print(e)
 
-        return await self.repository.create_user(body, avatar)
+        user = await self.repository.create_user(body, avatar)
+
+        if user:
+            await cache.set_user(user)
+
+        return user
 
     async def get_user_by_id(self, user_id: int):
         """
@@ -97,4 +103,9 @@ class UserService:
         Returns:
             The updated user object.
         """
-        return await self.repository.update_avatar_url(email, url)
+        user = await self.repository.update_avatar_url(email, url)
+        if user:
+            await cache.delete_user(user.id)
+            await cache.set_user(user)
+
+        return user

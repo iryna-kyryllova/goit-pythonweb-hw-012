@@ -4,11 +4,24 @@ from fastapi import FastAPI, Request, status
 from fastapi.middleware.cors import CORSMiddleware
 from slowapi.errors import RateLimitExceeded
 from starlette.responses import JSONResponse
+from contextlib import asynccontextmanager
 
 from src.api import utils, contacts, auth, users
 from src.conf import messages
+from src.services.cache import cache
 
-app = FastAPI()
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    """
+    Lifespan event to initialize Redis connection.
+    """
+    await cache.connect()
+    print("Підключення до Redis успішне!")
+    yield
+
+
+app = FastAPI(lifespan=lifespan)
 
 origins = ["<http://localhost:3000>"]
 

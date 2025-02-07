@@ -11,7 +11,6 @@ from src.conf import messages
 router = APIRouter(prefix="/auth", tags=["auth"])
 
 
-# Реєстрація користувача
 @router.post("/register", response_model=User, status_code=status.HTTP_201_CREATED)
 async def register_user(
     user_data: UserCreate,
@@ -82,7 +81,7 @@ async def login_user(
             status_code=status.HTTP_401_UNAUTHORIZED,
             detail=messages.EMAIL_NOT_CONFIRMED,
         )
-    access_token = await create_access_token(data={"sub": user.username})
+    access_token = await create_access_token(data={"sub": str(user.id)})
     return {"access_token": access_token, "token_type": "bearer"}
 
 

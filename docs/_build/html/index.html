@@ -43,18 +43,8 @@ documentation for details.</p>
 <div class="toctree-wrapper compound">
 </div>
 </section>
-<section id="module-main">
-<span id="rest-api-main"></span><h1>REST API main<a class="headerlink" href="#module-main" title="Link to this heading">¶</a></h1>
-<dl class="py function">
-<dt class="sig sig-object py" id="main.rate_limit_handler">
-<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">main.</span></span><span class="sig-name descname"><span class="pre">rate_limit_handler</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Request</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exc</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">RateLimitExceeded</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/main.html#rate_limit_handler"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#main.rate_limit_handler" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="main.root">
-<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">main.</span></span><span class="sig-name descname"><span class="pre">root</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/main.html#root"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#main.root" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
+<section id="rest-api-main">
+<h1>REST API main<a class="headerlink" href="#rest-api-main" title="Link to this heading">¶</a></h1>
 </section>
 <section id="module-src.repository.contacts">
 <span id="rest-api-repository-contacts"></span><h1>REST API repository Contacts<a class="headerlink" href="#module-src.repository.contacts" title="Link to this heading">¶</a></h1>
@@ -289,120 +279,9 @@ documentation for details.</p>
 </dd></dl>
 
 </section>
-<section id="module-src.services.auth">
-<span id="rest-api-services"></span><h1>REST API services<a class="headerlink" href="#module-src.services.auth" title="Link to this heading">¶</a></h1>
+<section id="module-src.services.contacts">
+<span id="rest-api-services"></span><h1>REST API services<a class="headerlink" href="#module-src.services.contacts" title="Link to this heading">¶</a></h1>
 <dl class="py class">
-<dt class="sig sig-object py" id="src.services.auth.Hash">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">src.services.auth.</span></span><span class="sig-name descname"><span class="pre">Hash</span></span><a class="reference internal" href="_modules/src/services/auth.html#Hash"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.services.auth.Hash" title="Link to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Utility class for password hashing and verification using bcrypt.</p>
-<dl class="py method">
-<dt class="sig sig-object py" id="src.services.auth.Hash.get_password_hash">
-<span class="sig-name descname"><span class="pre">get_password_hash</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">password</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/src/services/auth.html#Hash.get_password_hash"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.services.auth.Hash.get_password_hash" title="Link to this definition">¶</a></dt>
-<dd><p>Hash a password using bcrypt.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>password</strong> – The plain text password to hash.</p>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>The hashed password string.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="src.services.auth.Hash.pwd_context">
-<span class="sig-name descname"><span class="pre">pwd_context</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;CryptContext&gt;</span></em><a class="headerlink" href="#src.services.auth.Hash.pwd_context" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="src.services.auth.Hash.verify_password">
-<span class="sig-name descname"><span class="pre">verify_password</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">plain_password</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hashed_password</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/src/services/auth.html#Hash.verify_password"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.services.auth.Hash.verify_password" title="Link to this definition">¶</a></dt>
-<dd><p>Verify a plain text password against a hashed password.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>plain_password</strong> – The plain text password.</p></li>
-<li><p><strong>hashed_password</strong> – The hashed password to compare against.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>True if passwords match, otherwise False.</p>
-</dd>
-</dl>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="src.services.auth.create_access_token">
-<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">src.services.auth.</span></span><span class="sig-name descname"><span class="pre">create_access_token</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">expires_delta</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/src/services/auth.html#create_access_token"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.services.auth.create_access_token" title="Link to this definition">¶</a></dt>
-<dd><p>Generate a new JWT access token.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>data</strong> – The data to encode in the token.</p></li>
-<li><p><strong>expires_delta</strong> – Optional expiration time in seconds.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>Encoded JWT token as a string.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="src.services.auth.create_email_token">
-<span class="sig-prename descclassname"><span class="pre">src.services.auth.</span></span><span class="sig-name descname"><span class="pre">create_email_token</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/src/services/auth.html#create_email_token"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.services.auth.create_email_token" title="Link to this definition">¶</a></dt>
-<dd><p>Create an email verification token.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>data</strong> – The data to encode in the token.</p>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>Encoded JWT token as a string.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="src.services.auth.get_current_user">
-<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">src.services.auth.</span></span><span class="sig-name descname"><span class="pre">get_current_user</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">token</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">Depends(OAuth2PasswordBearer)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">db</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Session</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">Depends(get_db)</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/src/services/auth.html#get_current_user"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.services.auth.get_current_user" title="Link to this definition">¶</a></dt>
-<dd><p>Retrieve the current authenticated user from the JWT token.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>token</strong> – OAuth2 access token.</p></li>
-<li><p><strong>db</strong> – Database session dependency.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>The authenticated User object.</p>
-</dd>
-<dt class="field-odd">Raises<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>HTTPException</strong> – If the token is invalid or user is not found.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="src.services.auth.get_email_from_token">
-<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">src.services.auth.</span></span><span class="sig-name descname"><span class="pre">get_email_from_token</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">token</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/src/services/auth.html#get_email_from_token"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.services.auth.get_email_from_token" title="Link to this definition">¶</a></dt>
-<dd><p>Extract the email from an email verification token.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>token</strong> – JWT token containing the email.</p>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>The extracted email string.</p>
-</dd>
-<dt class="field-odd">Raises<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>HTTPException</strong> – If the token is invalid.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py class" id="module-src.services.contacts">
 <dt class="sig sig-object py" id="src.services.contacts.ContactService">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">src.services.contacts.</span></span><span class="sig-name descname"><span class="pre">ContactService</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">db</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">AsyncSession</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/src/services/contacts.html#ContactService"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.services.contacts.ContactService" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
@@ -532,27 +411,6 @@ documentation for details.</p>
 
 </dd></dl>
 
-<dl class="py function" id="module-src.services.email">
-<dt class="sig sig-object py" id="src.services.email.send_email">
-<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">src.services.email.</span></span><span class="sig-name descname"><span class="pre">send_email</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">email</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">EmailStr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">username</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">host</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/src/services/email.html#send_email"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.services.email.send_email" title="Link to this definition">¶</a></dt>
-<dd><p>Send a confirmation email to the user.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>email</strong> – The recipient’s email address.</p></li>
-<li><p><strong>username</strong> – The username of the recipient.</p></li>
-<li><p><strong>host</strong> – The host URL for generating the verification link.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>None</p>
-</dd>
-<dt class="field-odd">Raises<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>ConnectionErrors</strong> – If there is an issue sending the email.</p>
-</dd>
-</dl>
-</dd></dl>
-
 <dl class="py class" id="module-src.services.upload_file">
 <dt class="sig sig-object py" id="src.services.upload_file.UploadFileService">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">src.services.upload_file.</span></span><span class="sig-name descname"><span class="pre">UploadFileService</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cloud_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">api_key</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">api_secret</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/src/services/upload_file.html#UploadFileService"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.services.upload_file.UploadFileService" title="Link to this definition">¶</a></dt>
@@ -577,138 +435,9 @@ documentation for details.</p>
 
 </dd></dl>
 
-<dl class="py class" id="module-src.services.users">
-<dt class="sig sig-object py" id="src.services.users.UserService">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">src.services.users.</span></span><span class="sig-name descname"><span class="pre">UserService</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">db</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">AsyncSession</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/src/services/users.html#UserService"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.services.users.UserService" title="Link to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Service layer for handling user-related operations.</p>
-<dl class="py method">
-<dt class="sig sig-object py" id="src.services.users.UserService.confirmed_email">
-<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">confirmed_email</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">email</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/src/services/users.html#UserService.confirmed_email"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.services.users.UserService.confirmed_email" title="Link to this definition">¶</a></dt>
-<dd><p>Confirm a user’s email address.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>email</strong> – The email address of the user to confirm.</p>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>None</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="src.services.users.UserService.create_user">
-<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">create_user</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">body</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#src.schemas.users.UserCreate" title="src.schemas.users.UserCreate"><span class="pre">UserCreate</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/src/services/users.html#UserService.create_user"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.services.users.UserService.create_user" title="Link to this definition">¶</a></dt>
-<dd><p>Create a new user with an optional Gravatar avatar.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>body</strong> – UserCreate object containing user details.</p>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>The newly created user object.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="src.services.users.UserService.get_user_by_email">
-<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_user_by_email</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">email</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/src/services/users.html#UserService.get_user_by_email"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.services.users.UserService.get_user_by_email" title="Link to this definition">¶</a></dt>
-<dd><p>Retrieve a user by their email address.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>email</strong> – The email address of the user to retrieve.</p>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>The user object if found, otherwise None.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="src.services.users.UserService.get_user_by_id">
-<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_user_by_id</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">user_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/src/services/users.html#UserService.get_user_by_id"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.services.users.UserService.get_user_by_id" title="Link to this definition">¶</a></dt>
-<dd><p>Retrieve a user by their ID.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>user_id</strong> – The ID of the user to retrieve.</p>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>The user object if found, otherwise None.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="src.services.users.UserService.get_user_by_username">
-<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_user_by_username</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">username</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/src/services/users.html#UserService.get_user_by_username"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.services.users.UserService.get_user_by_username" title="Link to this definition">¶</a></dt>
-<dd><p>Retrieve a user by their username.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>username</strong> – The username of the user to retrieve.</p>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>The user object if found, otherwise None.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="src.services.users.UserService.update_avatar_url">
-<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">update_avatar_url</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">email</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">url</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/src/services/users.html#UserService.update_avatar_url"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.services.users.UserService.update_avatar_url" title="Link to this definition">¶</a></dt>
-<dd><p>Update a user’s avatar URL.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>email</strong> – The email address of the user whose avatar is being updated.</p></li>
-<li><p><strong>url</strong> – The new avatar URL.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>The updated user object.</p>
-</dd>
-</dl>
-</dd></dl>
-
-</dd></dl>
-
 </section>
-<section id="module-src.database.db">
-<span id="rest-api-database"></span><h1>REST API database<a class="headerlink" href="#module-src.database.db" title="Link to this heading">¶</a></h1>
-<dl class="py class">
-<dt class="sig sig-object py" id="src.database.db.DatabaseSessionManager">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">src.database.db.</span></span><span class="sig-name descname"><span class="pre">DatabaseSessionManager</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">url</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/src/database/db.html#DatabaseSessionManager"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.database.db.DatabaseSessionManager" title="Link to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Manages database sessions using SQLAlchemy’s async engine.</p>
-<dl class="py method">
-<dt class="sig sig-object py" id="src.database.db.DatabaseSessionManager.session">
-<span class="sig-name descname"><span class="pre">session</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/src/database/db.html#DatabaseSessionManager.session"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.database.db.DatabaseSessionManager.session" title="Link to this definition">¶</a></dt>
-<dd><p>Provide a database session using an async context manager.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Yields<span class="colon">:</span></dt>
-<dd class="field-odd"><p>An active database session.</p>
-</dd>
-<dt class="field-even">Raises<span class="colon">:</span></dt>
-<dd class="field-even"><ul class="simple">
-<li><p><strong>Exception</strong> – If the database session is not initialized.</p></li>
-<li><p><strong>SQLAlchemyError</strong> – If an error occurs during session operations.</p></li>
-</ul>
-</dd>
-</dl>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="src.database.db.get_db">
-<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">src.database.db.</span></span><span class="sig-name descname"><span class="pre">get_db</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/src/database/db.html#get_db"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.database.db.get_db" title="Link to this definition">¶</a></dt>
-<dd><p>Dependency function to get a database session.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Yields<span class="colon">:</span></dt>
-<dd class="field-odd"><p>An active database session.</p>
-</dd>
-</dl>
-</dd></dl>
-
+<section id="rest-api-database">
+<h1>REST API database<a class="headerlink" href="#rest-api-database" title="Link to this heading">¶</a></h1>
 </section>
 <section id="module-src.schemas.contacts">
 <span id="rest-api-schemas"></span><h1>REST API schemas<a class="headerlink" href="#module-src.schemas.contacts" title="Link to this heading">¶</a></h1>
@@ -921,107 +650,8 @@ documentation for details.</p>
 </dd></dl>
 
 </section>
-<section id="module-src.conf.config">
-<span id="rest-api-configuration"></span><h1>REST API configuration<a class="headerlink" href="#module-src.conf.config" title="Link to this heading">¶</a></h1>
-<dl class="py class">
-<dt class="sig sig-object py" id="src.conf.config.Settings">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">src.conf.config.</span></span><span class="sig-name descname"><span class="pre">Settings</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">_case_sensitive</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_nested_model_default_partial_update</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_env_prefix</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_env_file</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DotenvType</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">WindowsPath('.')</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_env_file_encoding</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_env_ignore_empty</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_env_nested_delimiter</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_env_parse_none_str</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_env_parse_enums</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_cli_prog_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_cli_parse_args</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_cli_settings_source</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">CliSettingsSource</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_cli_parse_none_str</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_cli_hide_none_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_cli_avoid_json</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_cli_enforce_required</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_cli_use_class_docs_for_groups</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_cli_exit_on_error</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_cli_prefix</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_cli_flag_prefix_char</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_cli_implicit_flags</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_cli_ignore_unknown_args</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_cli_kebab_case</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_secrets_dir</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">PathType</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">DB_URL</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">JWT_SECRET</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">JWT_ALGORITHM</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">JWT_EXPIRATION_SECONDS</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">MAIL_USERNAME</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">EmailStr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">MAIL_PASSWORD</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">MAIL_FROM</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">EmailStr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">MAIL_PORT</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">MAIL_SERVER</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">MAIL_FROM_NAME</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">MAIL_STARTTLS</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">MAIL_SSL_TLS</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">USE_CREDENTIALS</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">VALIDATE_CERTS</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">CLD_NAME</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">CLD_API_KEY</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">CLD_API_SECRET</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/src/conf/config.html#Settings"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.conf.config.Settings" title="Link to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">BaseSettings</span></code></p>
-<p>Defines the application settings using Pydantic’s BaseSettings.
-Values are loaded from environment variables and an optional .env file.</p>
-<dl class="py attribute">
-<dt class="sig sig-object py" id="src.conf.config.Settings.CLD_API_KEY">
-<span class="sig-name descname"><span class="pre">CLD_API_KEY</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#src.conf.config.Settings.CLD_API_KEY" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="src.conf.config.Settings.CLD_API_SECRET">
-<span class="sig-name descname"><span class="pre">CLD_API_SECRET</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#src.conf.config.Settings.CLD_API_SECRET" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="src.conf.config.Settings.CLD_NAME">
-<span class="sig-name descname"><span class="pre">CLD_NAME</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#src.conf.config.Settings.CLD_NAME" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="src.conf.config.Settings.DB_URL">
-<span class="sig-name descname"><span class="pre">DB_URL</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#src.conf.config.Settings.DB_URL" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="src.conf.config.Settings.JWT_ALGORITHM">
-<span class="sig-name descname"><span class="pre">JWT_ALGORITHM</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#src.conf.config.Settings.JWT_ALGORITHM" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="src.conf.config.Settings.JWT_EXPIRATION_SECONDS">
-<span class="sig-name descname"><span class="pre">JWT_EXPIRATION_SECONDS</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#src.conf.config.Settings.JWT_EXPIRATION_SECONDS" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="src.conf.config.Settings.JWT_SECRET">
-<span class="sig-name descname"><span class="pre">JWT_SECRET</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#src.conf.config.Settings.JWT_SECRET" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="src.conf.config.Settings.MAIL_FROM">
-<span class="sig-name descname"><span class="pre">MAIL_FROM</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">EmailStr</span></em><a class="headerlink" href="#src.conf.config.Settings.MAIL_FROM" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="src.conf.config.Settings.MAIL_FROM_NAME">
-<span class="sig-name descname"><span class="pre">MAIL_FROM_NAME</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#src.conf.config.Settings.MAIL_FROM_NAME" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="src.conf.config.Settings.MAIL_PASSWORD">
-<span class="sig-name descname"><span class="pre">MAIL_PASSWORD</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#src.conf.config.Settings.MAIL_PASSWORD" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="src.conf.config.Settings.MAIL_PORT">
-<span class="sig-name descname"><span class="pre">MAIL_PORT</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#src.conf.config.Settings.MAIL_PORT" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="src.conf.config.Settings.MAIL_SERVER">
-<span class="sig-name descname"><span class="pre">MAIL_SERVER</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#src.conf.config.Settings.MAIL_SERVER" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="src.conf.config.Settings.MAIL_SSL_TLS">
-<span class="sig-name descname"><span class="pre">MAIL_SSL_TLS</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#src.conf.config.Settings.MAIL_SSL_TLS" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="src.conf.config.Settings.MAIL_STARTTLS">
-<span class="sig-name descname"><span class="pre">MAIL_STARTTLS</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#src.conf.config.Settings.MAIL_STARTTLS" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="src.conf.config.Settings.MAIL_USERNAME">
-<span class="sig-name descname"><span class="pre">MAIL_USERNAME</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">EmailStr</span></em><a class="headerlink" href="#src.conf.config.Settings.MAIL_USERNAME" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="src.conf.config.Settings.USE_CREDENTIALS">
-<span class="sig-name descname"><span class="pre">USE_CREDENTIALS</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#src.conf.config.Settings.USE_CREDENTIALS" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="src.conf.config.Settings.VALIDATE_CERTS">
-<span class="sig-name descname"><span class="pre">VALIDATE_CERTS</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#src.conf.config.Settings.VALIDATE_CERTS" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="src.conf.config.Settings.model_config">
-<span class="sig-name descname"><span class="pre">model_config</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ClassVar</span><span class="p"><span class="pre">[</span></span><span class="pre">SettingsConfigDict</span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'arbitrary_types_allowed':</span> <span class="pre">True,</span> <span class="pre">'case_sensitive':</span> <span class="pre">True,</span> <span class="pre">'cli_avoid_json':</span> <span class="pre">False,</span> <span class="pre">'cli_enforce_required':</span> <span class="pre">False,</span> <span class="pre">'cli_exit_on_error':</span> <span class="pre">True,</span> <span class="pre">'cli_flag_prefix_char':</span> <span class="pre">'-',</span> <span class="pre">'cli_hide_none_type':</span> <span class="pre">False,</span> <span class="pre">'cli_ignore_unknown_args':</span> <span class="pre">False,</span> <span class="pre">'cli_implicit_flags':</span> <span class="pre">False,</span> <span class="pre">'cli_kebab_case':</span> <span class="pre">False,</span> <span class="pre">'cli_parse_args':</span> <span class="pre">None,</span> <span class="pre">'cli_parse_none_str':</span> <span class="pre">None,</span> <span class="pre">'cli_prefix':</span> <span class="pre">'',</span> <span class="pre">'cli_prog_name':</span> <span class="pre">None,</span> <span class="pre">'cli_use_class_docs_for_groups':</span> <span class="pre">False,</span> <span class="pre">'enable_decoding':</span> <span class="pre">True,</span> <span class="pre">'env_file':</span> <span class="pre">'.env',</span> <span class="pre">'env_file_encoding':</span> <span class="pre">'utf-8',</span> <span class="pre">'env_ignore_empty':</span> <span class="pre">False,</span> <span class="pre">'env_nested_delimiter':</span> <span class="pre">None,</span> <span class="pre">'env_parse_enums':</span> <span class="pre">None,</span> <span class="pre">'env_parse_none_str':</span> <span class="pre">None,</span> <span class="pre">'env_prefix':</span> <span class="pre">'',</span> <span class="pre">'extra':</span> <span class="pre">'ignore',</span> <span class="pre">'json_file':</span> <span class="pre">None,</span> <span class="pre">'json_file_encoding':</span> <span class="pre">None,</span> <span class="pre">'nested_model_default_partial_update':</span> <span class="pre">False,</span> <span class="pre">'protected_namespaces':</span> <span class="pre">('model_validate',</span> <span class="pre">'model_dump',</span> <span class="pre">'settings_customise_sources'),</span> <span class="pre">'secrets_dir':</span> <span class="pre">None,</span> <span class="pre">'toml_file':</span> <span class="pre">None,</span> <span class="pre">'validate_default':</span> <span class="pre">True,</span> <span class="pre">'yaml_file':</span> <span class="pre">None,</span> <span class="pre">'yaml_file_encoding':</span> <span class="pre">None}</span></em><a class="headerlink" href="#src.conf.config.Settings.model_config" title="Link to this definition">¶</a></dt>
-<dd><p>Configuration for the model, should be a dictionary conforming to [<cite>ConfigDict</cite>][pydantic.config.ConfigDict].</p>
-</dd></dl>
-
-</dd></dl>
-
+<section id="rest-api-configuration">
+<h1>REST API configuration<a class="headerlink" href="#rest-api-configuration" title="Link to this heading">¶</a></h1>
 </section>
 <section id="indices-and-tables">
 <h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Link to this heading">¶</a></h1>
@@ -1043,11 +673,7 @@ Values are loaded from environment variables and an optional .env file.</p>
     <h3><a href="#">Table of Contents</a></h3>
     <ul>
 <li><a class="reference internal" href="#">Rest API documentation</a></li>
-<li><a class="reference internal" href="#module-main">REST API main</a><ul>
-<li><a class="reference internal" href="#main.rate_limit_handler"><code class="docutils literal notranslate"><span class="pre">rate_limit_handler()</span></code></a></li>
-<li><a class="reference internal" href="#main.root"><code class="docutils literal notranslate"><span class="pre">root()</span></code></a></li>
-</ul>
-</li>
+<li><a class="reference internal" href="#rest-api-main">REST API main</a></li>
 <li><a class="reference internal" href="#module-src.repository.contacts">REST API repository Contacts</a><ul>
 <li><a class="reference internal" href="#src.repository.contacts.ContactRepository"><code class="docutils literal notranslate"><span class="pre">ContactRepository</span></code></a><ul>
 <li><a class="reference internal" href="#src.repository.contacts.ContactRepository.create_contact"><code class="docutils literal notranslate"><span class="pre">ContactRepository.create_contact()</span></code></a></li>
@@ -1073,17 +699,7 @@ Values are loaded from environment variables and an optional .env file.</p>
 </li>
 </ul>
 </li>
-<li><a class="reference internal" href="#module-src.services.auth">REST API services</a><ul>
-<li><a class="reference internal" href="#src.services.auth.Hash"><code class="docutils literal notranslate"><span class="pre">Hash</span></code></a><ul>
-<li><a class="reference internal" href="#src.services.auth.Hash.get_password_hash"><code class="docutils literal notranslate"><span class="pre">Hash.get_password_hash()</span></code></a></li>
-<li><a class="reference internal" href="#src.services.auth.Hash.pwd_context"><code class="docutils literal notranslate"><span class="pre">Hash.pwd_context</span></code></a></li>
-<li><a class="reference internal" href="#src.services.auth.Hash.verify_password"><code class="docutils literal notranslate"><span class="pre">Hash.verify_password()</span></code></a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#src.services.auth.create_access_token"><code class="docutils literal notranslate"><span class="pre">create_access_token()</span></code></a></li>
-<li><a class="reference internal" href="#src.services.auth.create_email_token"><code class="docutils literal notranslate"><span class="pre">create_email_token()</span></code></a></li>
-<li><a class="reference internal" href="#src.services.auth.get_current_user"><code class="docutils literal notranslate"><span class="pre">get_current_user()</span></code></a></li>
-<li><a class="reference internal" href="#src.services.auth.get_email_from_token"><code class="docutils literal notranslate"><span class="pre">get_email_from_token()</span></code></a></li>
+<li><a class="reference internal" href="#module-src.services.contacts">REST API services</a><ul>
 <li><a class="reference internal" href="#src.services.contacts.ContactService"><code class="docutils literal notranslate"><span class="pre">ContactService</span></code></a><ul>
 <li><a class="reference internal" href="#src.services.contacts.ContactService.create_contact"><code class="docutils literal notranslate"><span class="pre">ContactService.create_contact()</span></code></a></li>
 <li><a class="reference internal" href="#src.services.contacts.ContactService.get_contact"><code class="docutils literal notranslate"><span class="pre">ContactService.get_contact()</span></code></a></li>
@@ -1094,30 +710,13 @@ Values are loaded from environment variables and an optional .env file.</p>
 <li><a class="reference internal" href="#src.services.contacts.ContactService.update_contact"><code class="docutils literal notranslate"><span class="pre">ContactService.update_contact()</span></code></a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#src.services.email.send_email"><code class="docutils literal notranslate"><span class="pre">send_email()</span></code></a></li>
 <li><a class="reference internal" href="#src.services.upload_file.UploadFileService"><code class="docutils literal notranslate"><span class="pre">UploadFileService</span></code></a><ul>
 <li><a class="reference internal" href="#src.services.upload_file.UploadFileService.upload_file"><code class="docutils literal notranslate"><span class="pre">UploadFileService.upload_file()</span></code></a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#src.services.users.UserService"><code class="docutils literal notranslate"><span class="pre">UserService</span></code></a><ul>
-<li><a class="reference internal" href="#src.services.users.UserService.confirmed_email"><code class="docutils literal notranslate"><span class="pre">UserService.confirmed_email()</span></code></a></li>
-<li><a class="reference internal" href="#src.services.users.UserService.create_user"><code class="docutils literal notranslate"><span class="pre">UserService.create_user()</span></code></a></li>
-<li><a class="reference internal" href="#src.services.users.UserService.get_user_by_email"><code class="docutils literal notranslate"><span class="pre">UserService.get_user_by_email()</span></code></a></li>
-<li><a class="reference internal" href="#src.services.users.UserService.get_user_by_id"><code class="docutils literal notranslate"><span class="pre">UserService.get_user_by_id()</span></code></a></li>
-<li><a class="reference internal" href="#src.services.users.UserService.get_user_by_username"><code class="docutils literal notranslate"><span class="pre">UserService.get_user_by_username()</span></code></a></li>
-<li><a class="reference internal" href="#src.services.users.UserService.update_avatar_url"><code class="docutils literal notranslate"><span class="pre">UserService.update_avatar_url()</span></code></a></li>
 </ul>
 </li>
-</ul>
-</li>
-<li><a class="reference internal" href="#module-src.database.db">REST API database</a><ul>
-<li><a class="reference internal" href="#src.database.db.DatabaseSessionManager"><code class="docutils literal notranslate"><span class="pre">DatabaseSessionManager</span></code></a><ul>
-<li><a class="reference internal" href="#src.database.db.DatabaseSessionManager.session"><code class="docutils literal notranslate"><span class="pre">DatabaseSessionManager.session()</span></code></a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#src.database.db.get_db"><code class="docutils literal notranslate"><span class="pre">get_db()</span></code></a></li>
-</ul>
-</li>
+<li><a class="reference internal" href="#rest-api-database">REST API database</a></li>
 <li><a class="reference internal" href="#module-src.schemas.contacts">REST API schemas</a><ul>
 <li><a class="reference internal" href="#src.schemas.contacts.ContactBase"><code class="docutils literal notranslate"><span class="pre">ContactBase</span></code></a><ul>
 <li><a class="reference internal" href="#src.schemas.contacts.ContactBase.additional_data"><code class="docutils literal notranslate"><span class="pre">ContactBase.additional_data</span></code></a></li>
@@ -1170,30 +769,7 @@ Values are loaded from environment variables and an optional .env file.</p>
 </li>
 </ul>
 </li>
-<li><a class="reference internal" href="#module-src.conf.config">REST API configuration</a><ul>
-<li><a class="reference internal" href="#src.conf.config.Settings"><code class="docutils literal notranslate"><span class="pre">Settings</span></code></a><ul>
-<li><a class="reference internal" href="#src.conf.config.Settings.CLD_API_KEY"><code class="docutils literal notranslate"><span class="pre">Settings.CLD_API_KEY</span></code></a></li>
-<li><a class="reference internal" href="#src.conf.config.Settings.CLD_API_SECRET"><code class="docutils literal notranslate"><span class="pre">Settings.CLD_API_SECRET</span></code></a></li>
-<li><a class="reference internal" href="#src.conf.config.Settings.CLD_NAME"><code class="docutils literal notranslate"><span class="pre">Settings.CLD_NAME</span></code></a></li>
-<li><a class="reference internal" href="#src.conf.config.Settings.DB_URL"><code class="docutils literal notranslate"><span class="pre">Settings.DB_URL</span></code></a></li>
-<li><a class="reference internal" href="#src.conf.config.Settings.JWT_ALGORITHM"><code class="docutils literal notranslate"><span class="pre">Settings.JWT_ALGORITHM</span></code></a></li>
-<li><a class="reference internal" href="#src.conf.config.Settings.JWT_EXPIRATION_SECONDS"><code class="docutils literal notranslate"><span class="pre">Settings.JWT_EXPIRATION_SECONDS</span></code></a></li>
-<li><a class="reference internal" href="#src.conf.config.Settings.JWT_SECRET"><code class="docutils literal notranslate"><span class="pre">Settings.JWT_SECRET</span></code></a></li>
-<li><a class="reference internal" href="#src.conf.config.Settings.MAIL_FROM"><code class="docutils literal notranslate"><span class="pre">Settings.MAIL_FROM</span></code></a></li>
-<li><a class="reference internal" href="#src.conf.config.Settings.MAIL_FROM_NAME"><code class="docutils literal notranslate"><span class="pre">Settings.MAIL_FROM_NAME</span></code></a></li>
-<li><a class="reference internal" href="#src.conf.config.Settings.MAIL_PASSWORD"><code class="docutils literal notranslate"><span class="pre">Settings.MAIL_PASSWORD</span></code></a></li>
-<li><a class="reference internal" href="#src.conf.config.Settings.MAIL_PORT"><code class="docutils literal notranslate"><span class="pre">Settings.MAIL_PORT</span></code></a></li>
-<li><a class="reference internal" href="#src.conf.config.Settings.MAIL_SERVER"><code class="docutils literal notranslate"><span class="pre">Settings.MAIL_SERVER</span></code></a></li>
-<li><a class="reference internal" href="#src.conf.config.Settings.MAIL_SSL_TLS"><code class="docutils literal notranslate"><span class="pre">Settings.MAIL_SSL_TLS</span></code></a></li>
-<li><a class="reference internal" href="#src.conf.config.Settings.MAIL_STARTTLS"><code class="docutils literal notranslate"><span class="pre">Settings.MAIL_STARTTLS</span></code></a></li>
-<li><a class="reference internal" href="#src.conf.config.Settings.MAIL_USERNAME"><code class="docutils literal notranslate"><span class="pre">Settings.MAIL_USERNAME</span></code></a></li>
-<li><a class="reference internal" href="#src.conf.config.Settings.USE_CREDENTIALS"><code class="docutils literal notranslate"><span class="pre">Settings.USE_CREDENTIALS</span></code></a></li>
-<li><a class="reference internal" href="#src.conf.config.Settings.VALIDATE_CERTS"><code class="docutils literal notranslate"><span class="pre">Settings.VALIDATE_CERTS</span></code></a></li>
-<li><a class="reference internal" href="#src.conf.config.Settings.model_config"><code class="docutils literal notranslate"><span class="pre">Settings.model_config</span></code></a></li>
-</ul>
-</li>
-</ul>
-</li>
+<li><a class="reference internal" href="#rest-api-configuration">REST API configuration</a></li>
 <li><a class="reference internal" href="#indices-and-tables">Indices and tables</a></li>
 </ul>
 

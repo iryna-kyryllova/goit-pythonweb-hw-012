@@ -10,6 +10,7 @@ from jose import JWTError, jwt
 from src.database.db import get_db
 from src.conf.config import settings
 from src.services.users import UserService
+from src.services.cache import cache
 
 
 class Hash:
@@ -48,7 +49,6 @@ class Hash:
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/api/auth/login")
 
 
-# define a function to generate a new access token
 async def create_access_token(data: dict, expires_delta: Optional[int] = None):
     """
     Generate a new JWT access token.
@@ -76,7 +76,7 @@ async def get_current_user(
     token: str = Depends(oauth2_scheme), db: Session = Depends(get_db)
 ):
     """
-    Retrieve the current authenticated user from the JWT token.
+    Retrieve the current authenticated user from the cache or database.
 
     Args:
         token: OAuth2 access token.
@@ -95,19 +95,25 @@ async def get_current_user(
     )
 
     try:
-        # Decode JWT
         payload = jwt.decode(
             token, settings.JWT_SECRET, algorithms=[settings.JWT_ALGORITHM]
         )
-        username = payload["sub"]
-        if username is None:
+        user_id = int(payload["sub"])
+        if user_id is None:
             raise credentials_exception
-    except JWTError as e:
+    except JWTError:
         raise credentials_exception
+
+    cached_user = await cache.get_user(user_id)
+    if cached_user:
+        return cached_user
+
     user_service = UserService(db)
-    user = await user_service.get_user_by_username(username)
+    user = await user_service.get_user_by_id(user_id)
     if user is None:
         raise credentials_exception
+
+    await cache.set_user(user)
     return user
 
 

@@ -66,6 +66,11 @@ REST API services
   :undoc-members:
   :show-inheritance:
 
+.. automodule:: src.services.cache
+  :members:
+  :undoc-members:
+  :show-inheritance:
+
 REST API database
 =================
 .. automodule:: src.database.db
