@@ -14,11 +14,19 @@ router = APIRouter(prefix="/users", tags=["users"])
 limiter = Limiter(key_func=get_remote_address)
 
 
-@router.get(
-    "/me", response_model=User, description=messages.REQUESTS_LIMIT
-)
+@router.get("/me", response_model=User, description=messages.REQUESTS_LIMIT)
 @limiter.limit("5/minute")
 async def me(request: Request, user: User = Depends(get_current_user)):
+    """
+    Retrieve the currently authenticated user's details.
+
+    Args:
+        request: The incoming request object.
+        user: The currently authenticated user.
+
+    Returns:
+        The User object representing the authenticated user.
+    """
     return user
 
 
@@ -28,6 +36,17 @@ async def update_avatar_user(
     user: User = Depends(get_current_user),
     db: AsyncSession = Depends(get_db),
 ):
+    """
+    Update the avatar of the authenticated user.
+
+    Args:
+        file: The uploaded image file to be used as an avatar.
+        user: The currently authenticated user.
+        db: Database session dependency.
+
+    Returns:
+        The updated User object with the new avatar URL.
+    """
     avatar_url = UploadFileService(
         settings.CLD_NAME, settings.CLD_API_KEY, settings.CLD_API_SECRET
     ).upload_file(file, user.username)

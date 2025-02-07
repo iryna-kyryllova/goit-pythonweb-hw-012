@@ -19,6 +19,18 @@ async def register_user(
     request: Request,
     db: Session = Depends(get_db),
 ):
+    """
+    Register a new user.
+
+    Args:
+        user_data: UserCreate object containing user details.
+        background_tasks: BackgroundTasks instance for sending email confirmation.
+        request: Request object for base URL access.
+        db: Database session dependency.
+
+    Returns:
+        The newly created User object.
+    """
     user_service = UserService(db)
 
     email_user = await user_service.get_user_by_email(user_data.email)
@@ -47,6 +59,16 @@ async def register_user(
 async def login_user(
     form_data: OAuth2PasswordRequestForm = Depends(), db: Session = Depends(get_db)
 ):
+    """
+    Authenticate and log in a user.
+
+    Args:
+        form_data: OAuth2PasswordRequestForm with login credentials.
+        db: Database session dependency.
+
+    Returns:
+        Access token and token type if authentication is successful.
+    """
     user_service = UserService(db)
     user = await user_service.get_user_by_username(form_data.username)
     if not user or not Hash().verify_password(form_data.password, user.hashed_password):
@@ -66,6 +88,16 @@ async def login_user(
 
 @router.get("/confirmed_email/{token}")
 async def confirmed_email(token: str, db: Session = Depends(get_db)):
+    """
+    Confirm a user's email using a token.
+
+    Args:
+        token: The confirmation token.
+        db: Database session dependency.
+
+    Returns:
+        A success message if email is confirmed.
+    """
     email = await get_email_from_token(token)
     user_service = UserService(db)
     user = await user_service.get_user_by_email(email)
@@ -86,6 +118,18 @@ async def request_email(
     request: Request,
     db: Session = Depends(get_db),
 ):
+    """
+    Request an email confirmation to be resent.
+
+    Args:
+        body: RequestEmail object with user email.
+        background_tasks: BackgroundTasks instance for sending email confirmation.
+        request: Request object for base URL access.
+        db: Database session dependency.
+
+    Returns:
+        A message indicating the email confirmation request was processed.
+    """
     user_service = UserService(db)
     user = await user_service.get_user_by_email(body.email)
 
@@ -96,4 +140,3 @@ async def request_email(
             send_email, user.email, user.username, request.base_url
         )
     return {"message": messages.CHECK_EMAIL}
-
