@@ -40,7 +40,7 @@
 <span class="kn">from</span><span class="w"> </span><span class="nn">fastapi_mail.errors</span><span class="w"> </span><span class="kn">import</span> <span class="n">ConnectionErrors</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">pydantic</span><span class="w"> </span><span class="kn">import</span> <span class="n">EmailStr</span>
 
-<span class="kn">from</span><span class="w"> </span><span class="nn">src.services.auth</span><span class="w"> </span><span class="kn">import</span> <span class="n">create_email_token</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">src.services.auth</span><span class="w"> </span><span class="kn">import</span> <span class="n">create_email_token</span><span class="p">,</span> <span class="n">create_reset_password_token</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">src.conf.config</span><span class="w"> </span><span class="kn">import</span> <span class="n">settings</span>
 
 <span class="n">conf</span> <span class="o">=</span> <span class="n">ConnectionConfig</span><span class="p">(</span>
@@ -90,6 +90,43 @@
 
         <span class="n">fm</span> <span class="o">=</span> <span class="n">FastMail</span><span class="p">(</span><span class="n">conf</span><span class="p">)</span>
         <span class="k">await</span> <span class="n">fm</span><span class="o">.</span><span class="n">send_message</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="n">template_name</span><span class="o">=</span><span class="s2">&quot;verify_email.html&quot;</span><span class="p">)</span>
+    <span class="k">except</span> <span class="n">ConnectionErrors</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">err</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="send_reset_password_email">
+<a class="viewcode-back" href="../../../index.html#src.services.email.send_reset_password_email">[docs]</a>
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">send_reset_password_email</span><span class="p">(</span><span class="n">email</span><span class="p">:</span> <span class="n">EmailStr</span><span class="p">,</span> <span class="n">username</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">host</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Sends a password reset email to the user.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        email: The recipient&#39;s email address.</span>
+<span class="sd">        username: The recipient&#39;s username.</span>
+<span class="sd">        host: The base URL for generating the password reset link.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        None</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">        ConnectionErrors: If there is an issue sending the email.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">token</span> <span class="o">=</span> <span class="n">create_reset_password_token</span><span class="p">({</span><span class="s2">&quot;sub&quot;</span><span class="p">:</span> <span class="n">email</span><span class="p">})</span>
+        <span class="n">message</span> <span class="o">=</span> <span class="n">MessageSchema</span><span class="p">(</span>
+            <span class="n">subject</span><span class="o">=</span><span class="s2">&quot;Account Assistance: Reset Your Password&quot;</span><span class="p">,</span>
+            <span class="n">recipients</span><span class="o">=</span><span class="p">[</span><span class="n">email</span><span class="p">],</span>
+            <span class="n">template_body</span><span class="o">=</span><span class="p">{</span>
+                <span class="s2">&quot;host&quot;</span><span class="p">:</span> <span class="n">host</span><span class="p">,</span>
+                <span class="s2">&quot;username&quot;</span><span class="p">:</span> <span class="n">username</span><span class="p">,</span>
+                <span class="s2">&quot;token&quot;</span><span class="p">:</span> <span class="n">token</span><span class="p">,</span>
+            <span class="p">},</span>
+            <span class="n">subtype</span><span class="o">=</span><span class="n">MessageType</span><span class="o">.</span><span class="n">html</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="n">fm</span> <span class="o">=</span> <span class="n">FastMail</span><span class="p">(</span><span class="n">conf</span><span class="p">)</span>
+        <span class="k">await</span> <span class="n">fm</span><span class="o">.</span><span class="n">send_message</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="n">template_name</span><span class="o">=</span><span class="s2">&quot;reset_password.html&quot;</span><span class="p">)</span>
     <span class="k">except</span> <span class="n">ConnectionErrors</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="n">err</span><span class="p">)</span></div>
 

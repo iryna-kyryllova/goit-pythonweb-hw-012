@@ -302,6 +302,23 @@ documentation for details.</p>
 </dl>
 </dd></dl>
 
+<dl class="py method">
+<dt class="sig sig-object py" id="src.repository.users.UserRepository.update_user_role">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">update_user_role</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">user</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">User</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">role</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">UserRole</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/src/repository/users.html#UserRepository.update_user_role"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.repository.users.UserRepository.update_user_role" title="Link to this definition">¶</a></dt>
+<dd><p>Update the role of a user.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>user</strong> – The user object whose role is being updated.</p></li>
+<li><p><strong>role</strong> – The new role to be assigned to the user.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The updated user object with the new role.</p>
+</dd>
+</dl>
+</dd></dl>
+
 </dd></dl>
 
 </section>
@@ -382,6 +399,40 @@ documentation for details.</p>
 </dd></dl>
 
 <dl class="py function">
+<dt class="sig sig-object py" id="src.services.auth.create_reset_password_token">
+<span class="sig-prename descclassname"><span class="pre">src.services.auth.</span></span><span class="sig-name descname"><span class="pre">create_reset_password_token</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">expires_delta</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">3600</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/src/services/auth.html#create_reset_password_token"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.services.auth.create_reset_password_token" title="Link to this definition">¶</a></dt>
+<dd><p>Creates a JWT token for password reset (valid for 1 hour).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> – Data to encode (user’s email).</p></li>
+<li><p><strong>expires_delta</strong> – Token expiration time (default: 1 hour).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A string containing the JWT token.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.services.auth.get_current_admin_user">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">src.services.auth.</span></span><span class="sig-name descname"><span class="pre">get_current_admin_user</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">current_user</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">User</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">Depends(get_current_user)</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/src/services/auth.html#get_current_admin_user"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.services.auth.get_current_admin_user" title="Link to this definition">¶</a></dt>
+<dd><p>Dependency that ensures the current user has admin privileges.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>current_user</strong> – The authenticated user retrieved via dependency injection.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The user object if they have admin privileges.</p>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>HTTPException</strong> – If the user does not have admin rights.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
 <dt class="sig sig-object py" id="src.services.auth.get_current_user">
 <em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">src.services.auth.</span></span><span class="sig-name descname"><span class="pre">get_current_user</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">token</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">Depends(OAuth2PasswordBearer)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">db</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Session</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">Depends(get_db)</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/src/services/auth.html#get_current_user"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.services.auth.get_current_user" title="Link to this definition">¶</a></dt>
 <dd><p>Retrieve the current authenticated user from the cache or database.</p>
@@ -397,6 +448,23 @@ documentation for details.</p>
 </dd>
 <dt class="field-odd">Raises<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>HTTPException</strong> – If the token is invalid or user is not found.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.services.auth.get_email_from_reset_token">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">src.services.auth.</span></span><span class="sig-name descname"><span class="pre">get_email_from_reset_token</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">token</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/src/services/auth.html#get_email_from_reset_token"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.services.auth.get_email_from_reset_token" title="Link to this definition">¶</a></dt>
+<dd><p>Decodes the JWT token and extracts the user’s email.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>token</strong> – The password reset token.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The user’s email.</p>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>HTTPException</strong> – If the token is invalid or expired.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -569,6 +637,27 @@ documentation for details.</p>
 </dl>
 </dd></dl>
 
+<dl class="py function">
+<dt class="sig sig-object py" id="src.services.email.send_reset_password_email">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">src.services.email.</span></span><span class="sig-name descname"><span class="pre">send_reset_password_email</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">email</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">EmailStr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">username</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">host</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/src/services/email.html#send_reset_password_email"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.services.email.send_reset_password_email" title="Link to this definition">¶</a></dt>
+<dd><p>Sends a password reset email to the user.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>email</strong> – The recipient’s email address.</p></li>
+<li><p><strong>username</strong> – The recipient’s username.</p></li>
+<li><p><strong>host</strong> – The base URL for generating the password reset link.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>ConnectionErrors</strong> – If there is an issue sending the email.</p>
+</dd>
+</dl>
+</dd></dl>
+
 <dl class="py class" id="module-src.services.upload_file">
 <dt class="sig sig-object py" id="src.services.upload_file.UploadFileService">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">src.services.upload_file.</span></span><span class="sig-name descname"><span class="pre">UploadFileService</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cloud_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">api_key</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">api_secret</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/src/services/upload_file.html#UploadFileService"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.services.upload_file.UploadFileService" title="Link to this definition">¶</a></dt>
@@ -681,6 +770,40 @@ documentation for details.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>The updated user object.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.services.users.UserService.update_password">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">update_password</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">email</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">new_hashed_password</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/src/services/users.html#UserService.update_password"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.services.users.UserService.update_password" title="Link to this definition">¶</a></dt>
+<dd><p>Update the password for a user.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>email</strong> – The email address of the user whose password is being updated.</p></li>
+<li><p><strong>new_password</strong> – The new password to be set.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The updated User object.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.services.users.UserService.update_user_role">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">update_user_role</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">user</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">User</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">new_role</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">UserRole</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/src/services/users.html#UserService.update_user_role"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.services.users.UserService.update_user_role" title="Link to this definition">¶</a></dt>
+<dd><p>Update the role of a user.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>user</strong> – The user object whose role is being updated.</p></li>
+<li><p><strong>new_role</strong> – The new role to assign to the user.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The updated User object.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -905,6 +1028,47 @@ documentation for details.</p>
 </dd></dl>
 
 <dl class="py class">
+<dt class="sig sig-object py" id="src.schemas.users.ResetPassword">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">src.schemas.users.</span></span><span class="sig-name descname"><span class="pre">ResetPassword</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">token</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">new_password</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/src/schemas/users.html#ResetPassword"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.schemas.users.ResetPassword" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">BaseModel</span></code></p>
+<p>Schema for resetting the password using a token.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.schemas.users.ResetPassword.model_config">
+<span class="sig-name descname"><span class="pre">model_config</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ClassVar</span><span class="p"><span class="pre">[</span></span><span class="pre">ConfigDict</span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{}</span></em><a class="headerlink" href="#src.schemas.users.ResetPassword.model_config" title="Link to this definition">¶</a></dt>
+<dd><p>Configuration for the model, should be a dictionary conforming to [<cite>ConfigDict</cite>][pydantic.config.ConfigDict].</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.schemas.users.ResetPassword.new_password">
+<span class="sig-name descname"><span class="pre">new_password</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#src.schemas.users.ResetPassword.new_password" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.schemas.users.ResetPassword.token">
+<span class="sig-name descname"><span class="pre">token</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#src.schemas.users.ResetPassword.token" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="src.schemas.users.ResetPasswordRequest">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">src.schemas.users.</span></span><span class="sig-name descname"><span class="pre">ResetPasswordRequest</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">email</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">EmailStr</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/src/schemas/users.html#ResetPasswordRequest"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.schemas.users.ResetPasswordRequest" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">BaseModel</span></code></p>
+<p>Schema for requesting a password reset.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.schemas.users.ResetPasswordRequest.email">
+<span class="sig-name descname"><span class="pre">email</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">EmailStr</span></em><a class="headerlink" href="#src.schemas.users.ResetPasswordRequest.email" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.schemas.users.ResetPasswordRequest.model_config">
+<span class="sig-name descname"><span class="pre">model_config</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ClassVar</span><span class="p"><span class="pre">[</span></span><span class="pre">ConfigDict</span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{}</span></em><a class="headerlink" href="#src.schemas.users.ResetPasswordRequest.model_config" title="Link to this definition">¶</a></dt>
+<dd><p>Configuration for the model, should be a dictionary conforming to [<cite>ConfigDict</cite>][pydantic.config.ConfigDict].</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
 <dt class="sig sig-object py" id="src.schemas.users.Token">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">src.schemas.users.</span></span><span class="sig-name descname"><span class="pre">Token</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">access_token</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">token_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/src/schemas/users.html#Token"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.schemas.users.Token" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">BaseModel</span></code></p>
@@ -929,7 +1093,7 @@ documentation for details.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="src.schemas.users.User">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">src.schemas.users.</span></span><span class="sig-name descname"><span class="pre">User</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">username</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">email</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">avatar</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/src/schemas/users.html#User"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.schemas.users.User" title="Link to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">src.schemas.users.</span></span><span class="sig-name descname"><span class="pre">User</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">username</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">email</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">avatar</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">role</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">UserRole</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/src/schemas/users.html#User"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.schemas.users.User" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">BaseModel</span></code></p>
 <p>Schema for returning user information.</p>
 <dl class="py attribute">
@@ -954,6 +1118,11 @@ documentation for details.</p>
 </dd></dl>
 
 <dl class="py attribute">
+<dt class="sig sig-object py" id="src.schemas.users.User.role">
+<span class="sig-name descname"><span class="pre">role</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">UserRole</span></em><a class="headerlink" href="#src.schemas.users.User.role" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
 <dt class="sig sig-object py" id="src.schemas.users.User.username">
 <span class="sig-name descname"><span class="pre">username</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#src.schemas.users.User.username" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -962,7 +1131,7 @@ documentation for details.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="src.schemas.users.UserCreate">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">src.schemas.users.</span></span><span class="sig-name descname"><span class="pre">UserCreate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">username</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">email</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">password</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/src/schemas/users.html#UserCreate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.schemas.users.UserCreate" title="Link to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">src.schemas.users.</span></span><span class="sig-name descname"><span class="pre">UserCreate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">username</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">email</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">password</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">role</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">UserRole</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/src/schemas/users.html#UserCreate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#src.schemas.users.UserCreate" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">BaseModel</span></code></p>
 <p>Schema for user registration request.</p>
 <dl class="py attribute">
@@ -979,6 +1148,11 @@ documentation for details.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="src.schemas.users.UserCreate.password">
 <span class="sig-name descname"><span class="pre">password</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#src.schemas.users.UserCreate.password" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="src.schemas.users.UserCreate.role">
+<span class="sig-name descname"><span class="pre">role</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">UserRole</span></em><a class="headerlink" href="#src.schemas.users.UserCreate.role" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -1153,6 +1327,7 @@ Values are loaded from environment variables and an optional .env file.</p>
 <li><a class="reference internal" href="#src.repository.users.UserRepository.get_user_by_id"><code class="docutils literal notranslate"><span class="pre">UserRepository.get_user_by_id()</span></code></a></li>
 <li><a class="reference internal" href="#src.repository.users.UserRepository.get_user_by_username"><code class="docutils literal notranslate"><span class="pre">UserRepository.get_user_by_username()</span></code></a></li>
 <li><a class="reference internal" href="#src.repository.users.UserRepository.update_avatar_url"><code class="docutils literal notranslate"><span class="pre">UserRepository.update_avatar_url()</span></code></a></li>
+<li><a class="reference internal" href="#src.repository.users.UserRepository.update_user_role"><code class="docutils literal notranslate"><span class="pre">UserRepository.update_user_role()</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -1166,7 +1341,10 @@ Values are loaded from environment variables and an optional .env file.</p>
 </li>
 <li><a class="reference internal" href="#src.services.auth.create_access_token"><code class="docutils literal notranslate"><span class="pre">create_access_token()</span></code></a></li>
 <li><a class="reference internal" href="#src.services.auth.create_email_token"><code class="docutils literal notranslate"><span class="pre">create_email_token()</span></code></a></li>
+<li><a class="reference internal" href="#src.services.auth.create_reset_password_token"><code class="docutils literal notranslate"><span class="pre">create_reset_password_token()</span></code></a></li>
+<li><a class="reference internal" href="#src.services.auth.get_current_admin_user"><code class="docutils literal notranslate"><span class="pre">get_current_admin_user()</span></code></a></li>
 <li><a class="reference internal" href="#src.services.auth.get_current_user"><code class="docutils literal notranslate"><span class="pre">get_current_user()</span></code></a></li>
+<li><a class="reference internal" href="#src.services.auth.get_email_from_reset_token"><code class="docutils literal notranslate"><span class="pre">get_email_from_reset_token()</span></code></a></li>
 <li><a class="reference internal" href="#src.services.auth.get_email_from_token"><code class="docutils literal notranslate"><span class="pre">get_email_from_token()</span></code></a></li>
 <li><a class="reference internal" href="#src.services.contacts.ContactService"><code class="docutils literal notranslate"><span class="pre">ContactService</span></code></a><ul>
 <li><a class="reference internal" href="#src.services.contacts.ContactService.create_contact"><code class="docutils literal notranslate"><span class="pre">ContactService.create_contact()</span></code></a></li>
@@ -1179,6 +1357,7 @@ Values are loaded from environment variables and an optional .env file.</p>
 </ul>
 </li>
 <li><a class="reference internal" href="#src.services.email.send_email"><code class="docutils literal notranslate"><span class="pre">send_email()</span></code></a></li>
+<li><a class="reference internal" href="#src.services.email.send_reset_password_email"><code class="docutils literal notranslate"><span class="pre">send_reset_password_email()</span></code></a></li>
 <li><a class="reference internal" href="#src.services.upload_file.UploadFileService"><code class="docutils literal notranslate"><span class="pre">UploadFileService</span></code></a><ul>
 <li><a class="reference internal" href="#src.services.upload_file.UploadFileService.upload_file"><code class="docutils literal notranslate"><span class="pre">UploadFileService.upload_file()</span></code></a></li>
 </ul>
@@ -1190,6 +1369,8 @@ Values are loaded from environment variables and an optional .env file.</p>
 <li><a class="reference internal" href="#src.services.users.UserService.get_user_by_id"><code class="docutils literal notranslate"><span class="pre">UserService.get_user_by_id()</span></code></a></li>
 <li><a class="reference internal" href="#src.services.users.UserService.get_user_by_username"><code class="docutils literal notranslate"><span class="pre">UserService.get_user_by_username()</span></code></a></li>
 <li><a class="reference internal" href="#src.services.users.UserService.update_avatar_url"><code class="docutils literal notranslate"><span class="pre">UserService.update_avatar_url()</span></code></a></li>
+<li><a class="reference internal" href="#src.services.users.UserService.update_password"><code class="docutils literal notranslate"><span class="pre">UserService.update_password()</span></code></a></li>
+<li><a class="reference internal" href="#src.services.users.UserService.update_user_role"><code class="docutils literal notranslate"><span class="pre">UserService.update_user_role()</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#src.services.cache.RedisCache"><code class="docutils literal notranslate"><span class="pre">RedisCache</span></code></a><ul>
@@ -1238,6 +1419,17 @@ Values are loaded from environment variables and an optional .env file.</p>
 <li><a class="reference internal" href="#src.schemas.users.RequestEmail.model_config"><code class="docutils literal notranslate"><span class="pre">RequestEmail.model_config</span></code></a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#src.schemas.users.ResetPassword"><code class="docutils literal notranslate"><span class="pre">ResetPassword</span></code></a><ul>
+<li><a class="reference internal" href="#src.schemas.users.ResetPassword.model_config"><code class="docutils literal notranslate"><span class="pre">ResetPassword.model_config</span></code></a></li>
+<li><a class="reference internal" href="#src.schemas.users.ResetPassword.new_password"><code class="docutils literal notranslate"><span class="pre">ResetPassword.new_password</span></code></a></li>
+<li><a class="reference internal" href="#src.schemas.users.ResetPassword.token"><code class="docutils literal notranslate"><span class="pre">ResetPassword.token</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#src.schemas.users.ResetPasswordRequest"><code class="docutils literal notranslate"><span class="pre">ResetPasswordRequest</span></code></a><ul>
+<li><a class="reference internal" href="#src.schemas.users.ResetPasswordRequest.email"><code class="docutils literal notranslate"><span class="pre">ResetPasswordRequest.email</span></code></a></li>
+<li><a class="reference internal" href="#src.schemas.users.ResetPasswordRequest.model_config"><code class="docutils literal notranslate"><span class="pre">ResetPasswordRequest.model_config</span></code></a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#src.schemas.users.Token"><code class="docutils literal notranslate"><span class="pre">Token</span></code></a><ul>
 <li><a class="reference internal" href="#src.schemas.users.Token.access_token"><code class="docutils literal notranslate"><span class="pre">Token.access_token</span></code></a></li>
 <li><a class="reference internal" href="#src.schemas.users.Token.model_config"><code class="docutils literal notranslate"><span class="pre">Token.model_config</span></code></a></li>
@@ -1249,6 +1441,7 @@ Values are loaded from environment variables and an optional .env file.</p>
 <li><a class="reference internal" href="#src.schemas.users.User.email"><code class="docutils literal notranslate"><span class="pre">User.email</span></code></a></li>
 <li><a class="reference internal" href="#src.schemas.users.User.id"><code class="docutils literal notranslate"><span class="pre">User.id</span></code></a></li>
 <li><a class="reference internal" href="#src.schemas.users.User.model_config"><code class="docutils literal notranslate"><span class="pre">User.model_config</span></code></a></li>
+<li><a class="reference internal" href="#src.schemas.users.User.role"><code class="docutils literal notranslate"><span class="pre">User.role</span></code></a></li>
 <li><a class="reference internal" href="#src.schemas.users.User.username"><code class="docutils literal notranslate"><span class="pre">User.username</span></code></a></li>
 </ul>
 </li>
@@ -1256,6 +1449,7 @@ Values are loaded from environment variables and an optional .env file.</p>
 <li><a class="reference internal" href="#src.schemas.users.UserCreate.email"><code class="docutils literal notranslate"><span class="pre">UserCreate.email</span></code></a></li>
 <li><a class="reference internal" href="#src.schemas.users.UserCreate.model_config"><code class="docutils literal notranslate"><span class="pre">UserCreate.model_config</span></code></a></li>
 <li><a class="reference internal" href="#src.schemas.users.UserCreate.password"><code class="docutils literal notranslate"><span class="pre">UserCreate.password</span></code></a></li>
+<li><a class="reference internal" href="#src.schemas.users.UserCreate.role"><code class="docutils literal notranslate"><span class="pre">UserCreate.role</span></code></a></li>
 <li><a class="reference internal" href="#src.schemas.users.UserCreate.username"><code class="docutils literal notranslate"><span class="pre">UserCreate.username</span></code></a></li>
 </ul>
 </li>

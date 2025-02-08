@@ -44,7 +44,9 @@
 <span class="kn">from</span><span class="w"> </span><span class="nn">jose</span><span class="w"> </span><span class="kn">import</span> <span class="n">JWTError</span><span class="p">,</span> <span class="n">jwt</span>
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">src.database.db</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_db</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">src.database.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">UserRole</span><span class="p">,</span> <span class="n">User</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">src.conf.config</span><span class="w"> </span><span class="kn">import</span> <span class="n">settings</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">src.conf</span><span class="w"> </span><span class="kn">import</span> <span class="n">messages</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">src.services.users</span><span class="w"> </span><span class="kn">import</span> <span class="n">UserService</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">src.services.cache</span><span class="w"> </span><span class="kn">import</span> <span class="n">cache</span>
 
@@ -168,6 +170,32 @@
 
 
 
+<div class="viewcode-block" id="get_current_admin_user">
+<a class="viewcode-back" href="../../../index.html#src.services.auth.get_current_admin_user">[docs]</a>
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">get_current_admin_user</span><span class="p">(</span>
+    <span class="n">current_user</span><span class="p">:</span> <span class="n">User</span> <span class="o">=</span> <span class="n">Depends</span><span class="p">(</span><span class="n">get_current_user</span><span class="p">),</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Dependency that ensures the current user has admin privileges.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        current_user: The authenticated user retrieved via dependency injection.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        The user object if they have admin privileges.</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">        HTTPException: If the user does not have admin rights.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">current_user</span><span class="o">.</span><span class="n">role</span> <span class="o">!=</span> <span class="n">UserRole</span><span class="o">.</span><span class="n">ADMIN</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">HTTPException</span><span class="p">(</span>
+            <span class="n">status_code</span><span class="o">=</span><span class="n">status</span><span class="o">.</span><span class="n">HTTP_403_FORBIDDEN</span><span class="p">,</span>
+            <span class="n">detail</span><span class="o">=</span><span class="n">messages</span><span class="o">.</span><span class="n">ADMIN_ONLY</span><span class="p">,</span>
+        <span class="p">)</span>
+    <span class="k">return</span> <span class="n">current_user</span></div>
+
+
+
 <div class="viewcode-block" id="create_email_token">
 <a class="viewcode-back" href="../../../index.html#src.services.auth.create_email_token">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">create_email_token</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="nb">dict</span><span class="p">):</span>
@@ -213,6 +241,55 @@
         <span class="k">raise</span> <span class="n">HTTPException</span><span class="p">(</span>
             <span class="n">status_code</span><span class="o">=</span><span class="n">status</span><span class="o">.</span><span class="n">HTTP_422_UNPROCESSABLE_ENTITY</span><span class="p">,</span>
             <span class="n">detail</span><span class="o">=</span><span class="s2">&quot;Неправильний токен для перевірки електронної пошти&quot;</span><span class="p">,</span>
+        <span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="create_reset_password_token">
+<a class="viewcode-back" href="../../../index.html#src.services.auth.create_reset_password_token">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">create_reset_password_token</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span> <span class="n">expires_delta</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">3600</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Creates a JWT token for password reset (valid for 1 hour).</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        data: Data to encode (user&#39;s email).</span>
+<span class="sd">        expires_delta: Token expiration time (default: 1 hour).</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        A string containing the JWT token.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">to_encode</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">expire</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">(</span><span class="n">UTC</span><span class="p">)</span> <span class="o">+</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">seconds</span><span class="o">=</span><span class="n">expires_delta</span><span class="p">)</span>
+    <span class="n">to_encode</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s2">&quot;exp&quot;</span><span class="p">:</span> <span class="n">expire</span><span class="p">})</span>
+    <span class="k">return</span> <span class="n">jwt</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">to_encode</span><span class="p">,</span> <span class="n">settings</span><span class="o">.</span><span class="n">JWT_SECRET</span><span class="p">,</span> <span class="n">algorithm</span><span class="o">=</span><span class="n">settings</span><span class="o">.</span><span class="n">JWT_ALGORITHM</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="get_email_from_reset_token">
+<a class="viewcode-back" href="../../../index.html#src.services.auth.get_email_from_reset_token">[docs]</a>
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">get_email_from_reset_token</span><span class="p">(</span><span class="n">token</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Decodes the JWT token and extracts the user&#39;s email.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        token: The password reset token.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        The user&#39;s email.</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">        HTTPException: If the token is invalid or expired.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">payload</span> <span class="o">=</span> <span class="n">jwt</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span>
+            <span class="n">token</span><span class="p">,</span> <span class="n">settings</span><span class="o">.</span><span class="n">JWT_SECRET</span><span class="p">,</span> <span class="n">algorithms</span><span class="o">=</span><span class="p">[</span><span class="n">settings</span><span class="o">.</span><span class="n">JWT_ALGORITHM</span><span class="p">]</span>
+        <span class="p">)</span>
+        <span class="n">email</span> <span class="o">=</span> <span class="n">payload</span><span class="p">[</span><span class="s2">&quot;sub&quot;</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">email</span>
+    <span class="k">except</span> <span class="n">JWTError</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">HTTPException</span><span class="p">(</span>
+            <span class="n">status_code</span><span class="o">=</span><span class="n">status</span><span class="o">.</span><span class="n">HTTP_400_BAD_REQUEST</span><span class="p">,</span>
+            <span class="n">detail</span><span class="o">=</span><span class="s2">&quot;Недійсний або прострочений токен для скидання пароля.&quot;</span><span class="p">,</span>
         <span class="p">)</span></div>
 
 </pre></div>

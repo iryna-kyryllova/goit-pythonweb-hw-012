@@ -60,7 +60,7 @@ class UserRepository:
         stmt = select(User).filter_by(email=email)
         user = await self.db.execute(stmt)
         return user.scalar_one_or_none()
-    
+
     async def update_user_role(self, user: User, role: UserRole):
         """
         Update the role of a user.

@@ -217,6 +217,7 @@ async def reset_password(
 
     return {"message": messages.PASSWORD_CHANGED}
 
+
 @router.post("/make-admin", response_model=User)
 async def make_admin(
     email: str,
@@ -240,7 +241,7 @@ async def make_admin(
     """
     user_service = UserService(db)
     user = await user_service.get_user_by_email(email)
-    
+
     if not user:
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND, detail=messages.USER_NOT_FOUND

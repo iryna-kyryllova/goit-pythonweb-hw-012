@@ -1,5 +1,13 @@
 from datetime import datetime, date
-from sqlalchemy import Integer, String, func, Column, ForeignKey, Boolean, Enum as SqlEnum
+from sqlalchemy import (
+    Integer,
+    String,
+    func,
+    Column,
+    ForeignKey,
+    Boolean,
+    Enum as SqlEnum,
+)
 from sqlalchemy.orm import mapped_column, Mapped, DeclarativeBase, relationship
 from sqlalchemy.sql.sqltypes import DateTime, Date
 from enum import Enum

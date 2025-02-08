@@ -48,6 +48,7 @@
  | <a href="#J"><strong>J</strong></a>
  | <a href="#L"><strong>L</strong></a>
  | <a href="#M"><strong>M</strong></a>
+ | <a href="#N"><strong>N</strong></a>
  | <a href="#P"><strong>P</strong></a>
  | <a href="#R"><strong>R</strong></a>
  | <a href="#S"><strong>S</strong></a>
@@ -117,6 +118,8 @@
       </ul></li>
       <li><a href="index.html#src.services.auth.create_email_token">create_email_token() (in module src.services.auth)</a>
 </li>
+      <li><a href="index.html#src.services.auth.create_reset_password_token">create_reset_password_token() (in module src.services.auth)</a>
+</li>
       <li><a href="index.html#src.repository.users.UserRepository.create_user">create_user() (src.repository.users.UserRepository method)</a>
 
       <ul>
@@ -152,6 +155,8 @@
       <ul>
         <li><a href="index.html#src.schemas.users.RequestEmail.email">(src.schemas.users.RequestEmail attribute)</a>
 </li>
+        <li><a href="index.html#src.schemas.users.ResetPasswordRequest.email">(src.schemas.users.ResetPasswordRequest attribute)</a>
+</li>
         <li><a href="index.html#src.schemas.users.User.email">(src.schemas.users.User attribute)</a>
 </li>
         <li><a href="index.html#src.schemas.users.UserCreate.email">(src.schemas.users.UserCreate attribute)</a>
@@ -181,16 +186,20 @@
         <li><a href="index.html#src.services.contacts.ContactService.get_contacts">(src.services.contacts.ContactService method)</a>
 </li>
       </ul></li>
+      <li><a href="index.html#src.services.auth.get_current_admin_user">get_current_admin_user() (in module src.services.auth)</a>
+</li>
       <li><a href="index.html#src.services.auth.get_current_user">get_current_user() (in module src.services.auth)</a>
 </li>
       <li><a href="index.html#src.database.db.get_db">get_db() (in module src.database.db)</a>
 </li>
-      <li><a href="index.html#src.services.auth.get_email_from_token">get_email_from_token() (in module src.services.auth)</a>
+      <li><a href="index.html#src.services.auth.get_email_from_reset_token">get_email_from_reset_token() (in module src.services.auth)</a>
 </li>
-      <li><a href="index.html#src.services.auth.Hash.get_password_hash">get_password_hash() (src.services.auth.Hash method)</a>
+      <li><a href="index.html#src.services.auth.get_email_from_token">get_email_from_token() (in module src.services.auth)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="index.html#src.services.auth.Hash.get_password_hash">get_password_hash() (src.services.auth.Hash method)</a>
+</li>
       <li><a href="index.html#src.services.cache.RedisCache.get_user">get_user() (src.services.cache.RedisCache method)</a>
 </li>
       <li><a href="index.html#src.repository.users.UserRepository.get_user_by_email">get_user_by_email() (src.repository.users.UserRepository method)</a>
@@ -303,6 +312,10 @@
 </li>
         <li><a href="index.html#src.schemas.users.RequestEmail.model_config">(src.schemas.users.RequestEmail attribute)</a>
 </li>
+        <li><a href="index.html#src.schemas.users.ResetPassword.model_config">(src.schemas.users.ResetPassword attribute)</a>
+</li>
+        <li><a href="index.html#src.schemas.users.ResetPasswordRequest.model_config">(src.schemas.users.ResetPasswordRequest attribute)</a>
+</li>
         <li><a href="index.html#src.schemas.users.Token.model_config">(src.schemas.users.Token attribute)</a>
 </li>
         <li><a href="index.html#src.schemas.users.User.model_config">(src.schemas.users.User attribute)</a>
@@ -346,6 +359,14 @@
   </ul></td>
 </tr></table>
 
+<h2 id="N">N</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="index.html#src.schemas.users.ResetPassword.new_password">new_password (src.schemas.users.ResetPassword attribute)</a>
+</li>
+  </ul></td>
+</tr></table>
+
 <h2 id="P">P</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
@@ -371,8 +392,6 @@
 </li>
       <li><a href="index.html#src.conf.config.Settings.REDIS_PORT">REDIS_PORT (src.conf.config.Settings attribute)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="index.html#src.services.cache.RedisCache">RedisCache (class in src.services.cache)</a>
 </li>
       <li><a href="index.html#src.repository.contacts.ContactRepository.remove_contact">remove_contact() (src.repository.contacts.ContactRepository method)</a>
@@ -381,8 +400,20 @@
         <li><a href="index.html#src.services.contacts.ContactService.remove_contact">(src.services.contacts.ContactService method)</a>
 </li>
       </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="index.html#src.schemas.users.RequestEmail">RequestEmail (class in src.schemas.users)</a>
 </li>
+      <li><a href="index.html#src.schemas.users.ResetPassword">ResetPassword (class in src.schemas.users)</a>
+</li>
+      <li><a href="index.html#src.schemas.users.ResetPasswordRequest">ResetPasswordRequest (class in src.schemas.users)</a>
+</li>
+      <li><a href="index.html#src.schemas.users.User.role">role (src.schemas.users.User attribute)</a>
+
+      <ul>
+        <li><a href="index.html#src.schemas.users.UserCreate.role">(src.schemas.users.UserCreate attribute)</a>
+</li>
+      </ul></li>
       <li><a href="index.html#main.root">root() (in module main)</a>
 </li>
   </ul></td>
@@ -398,6 +429,8 @@
 </li>
       </ul></li>
       <li><a href="index.html#src.services.email.send_email">send_email() (in module src.services.email)</a>
+</li>
+      <li><a href="index.html#src.services.email.send_reset_password_email">send_reset_password_email() (in module src.services.email)</a>
 </li>
       <li><a href="index.html#src.database.db.DatabaseSessionManager.session">session() (src.database.db.DatabaseSessionManager method)</a>
 </li>
@@ -433,6 +466,8 @@
         <li><a href="index.html#module-src.repository.users">module</a>
 </li>
       </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li>
     src.schemas.contacts
 
@@ -440,8 +475,6 @@
         <li><a href="index.html#module-src.schemas.contacts">module</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li>
     src.schemas.users
 
@@ -501,6 +534,8 @@
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="index.html#src.schemas.users.ResetPassword.token">token (src.schemas.users.ResetPassword attribute)</a>
+</li>
       <li><a href="index.html#src.schemas.users.Token.token_type">token_type (src.schemas.users.Token attribute)</a>
 </li>
   </ul></td>
@@ -521,14 +556,22 @@
         <li><a href="index.html#src.services.contacts.ContactService.update_contact">(src.services.contacts.ContactService method)</a>
 </li>
       </ul></li>
+      <li><a href="index.html#src.services.users.UserService.update_password">update_password() (src.services.users.UserService method)</a>
+</li>
+      <li><a href="index.html#src.repository.users.UserRepository.update_user_role">update_user_role() (src.repository.users.UserRepository method)</a>
+
+      <ul>
+        <li><a href="index.html#src.services.users.UserService.update_user_role">(src.services.users.UserService method)</a>
+</li>
+      </ul></li>
       <li><a href="index.html#src.schemas.contacts.ContactResponse.updated_at">updated_at (src.schemas.contacts.ContactResponse attribute)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="index.html#src.services.upload_file.UploadFileService.upload_file">upload_file() (src.services.upload_file.UploadFileService static method)</a>
 </li>
       <li><a href="index.html#src.services.upload_file.UploadFileService">UploadFileService (class in src.services.upload_file)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="index.html#src.conf.config.Settings.USE_CREDENTIALS">USE_CREDENTIALS (src.conf.config.Settings attribute)</a>
 </li>
       <li><a href="index.html#src.schemas.users.User">User (class in src.schemas.users)</a>
