@@ -10,7 +10,9 @@ from src.services.auth import (
 )
 from src.services.users import UserService
 from src.services.email import send_email, send_reset_password_email
+from src.services.auth import get_current_admin_user
 from src.database.db import get_db
+from src.database.models import UserRole
 from src.conf import messages
 
 router = APIRouter(prefix="/auth", tags=["auth"])
@@ -214,3 +216,40 @@ async def reset_password(
     await user_service.update_password(user.email, hashed_password)
 
     return {"message": messages.PASSWORD_CHANGED}
+
+@router.post("/make-admin", response_model=User)
+async def make_admin(
+    email: str,
+    current_admin: User = Depends(get_current_admin_user),
+    db: Session = Depends(get_db),
+):
+    """
+    Promote a user to admin.
+
+    Args:
+        email: The email address of the user to be promoted.
+        current_admin: The currently authenticated admin user (ensures only admins can perform this action).
+        db: Database session dependency.
+
+    Returns:
+        The updated User object with admin role.
+
+    Raises:
+        HTTPException: If the user does not exist.
+        HTTPException: If the user is already an admin.
+    """
+    user_service = UserService(db)
+    user = await user_service.get_user_by_email(email)
+    
+    if not user:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND, detail=messages.USER_NOT_FOUND
+        )
+
+    if user.role == UserRole.ADMIN:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST, detail=messages.USER_ALREADY_ADMIN
+        )
+
+    updated_user = await user_service.update_user_role(user, UserRole.ADMIN)
+    return updated_user

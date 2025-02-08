@@ -1,4 +1,5 @@
 from pydantic import BaseModel, ConfigDict, EmailStr
+from src.database.models import UserRole
 
 """
 Defines Pydantic schemas for user-related operations.
@@ -14,6 +15,7 @@ class User(BaseModel):
     username: str
     email: str
     avatar: str
+    role: UserRole
 
     model_config = ConfigDict(from_attributes=True)
 
@@ -26,6 +28,7 @@ class UserCreate(BaseModel):
     username: str
     email: str
     password: str
+    role: UserRole
 
 
 class Token(BaseModel):

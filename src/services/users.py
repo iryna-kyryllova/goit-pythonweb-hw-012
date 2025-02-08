@@ -4,6 +4,8 @@ from libgravatar import Gravatar
 from src.repository.users import UserRepository
 from src.schemas.users import UserCreate
 from src.services.cache import cache
+from src.database.models import UserRole, User
+from src.conf import messages
 
 
 class UserService:
@@ -126,3 +128,16 @@ class UserService:
             user.hashed_password = new_hashed_password
             await self.repository.db.commit()
         return user
+
+    async def update_user_role(self, user: User, new_role: UserRole):
+        """
+        Update the role of a user.
+
+        Args:
+            user: The user object whose role is being updated.
+            new_role: The new role to assign to the user.
+
+        Returns:
+            The updated User object.
+        """
+        return await self.repository.update_user_role(user, new_role)

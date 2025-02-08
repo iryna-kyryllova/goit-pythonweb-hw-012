@@ -1,7 +1,7 @@
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from src.database.models import User
+from src.database.models import User, UserRole
 from src.schemas.users import UserCreate
 
 
@@ -60,6 +60,22 @@ class UserRepository:
         stmt = select(User).filter_by(email=email)
         user = await self.db.execute(stmt)
         return user.scalar_one_or_none()
+    
+    async def update_user_role(self, user: User, role: UserRole):
+        """
+        Update the role of a user.
+
+        Args:
+            user: The user object whose role is being updated.
+            role: The new role to be assigned to the user.
+
+        Returns:
+            The updated user object with the new role.
+        """
+        user.role = role
+        await self.db.commit()
+        await self.db.refresh(user)
+        return user
 
     async def create_user(self, body: UserCreate, avatar: str = None) -> User:
         """

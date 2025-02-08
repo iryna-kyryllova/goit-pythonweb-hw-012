@@ -8,7 +8,9 @@ from sqlalchemy.orm import Session
 from jose import JWTError, jwt
 
 from src.database.db import get_db
+from src.database.models import UserRole, User
 from src.conf.config import settings
+from src.conf import messages
 from src.services.users import UserService
 from src.services.cache import cache
 
@@ -115,6 +117,29 @@ async def get_current_user(
 
     await cache.set_user(user)
     return user
+
+
+async def get_current_admin_user(
+    current_user: User = Depends(get_current_user),
+):
+    """
+    Dependency that ensures the current user has admin privileges.
+
+    Args:
+        current_user: The authenticated user retrieved via dependency injection.
+
+    Returns:
+        The user object if they have admin privileges.
+
+    Raises:
+        HTTPException: If the user does not have admin rights.
+    """
+    if current_user.role != UserRole.ADMIN:
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail=messages.ADMIN_ONLY,
+        )
+    return current_user
 
 
 def create_email_token(data: dict):
