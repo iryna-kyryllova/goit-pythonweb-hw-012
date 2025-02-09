@@ -13,6 +13,9 @@ class Settings(BaseSettings):
     """
 
     DB_URL: str
+    DB_USER: str
+    DB_PASSWORD: str
+    DB_NAME: str
     JWT_SECRET: str
     JWT_ALGORITHM: str
     JWT_EXPIRATION_SECONDS: int

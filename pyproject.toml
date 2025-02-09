@@ -1,5 +1,5 @@
 [project]
-name = "goit-pythonweb-hw-08"
+name = "goit-pythonweb-hw-12"
 version = "0.1.0"
 description = ""
 authors = [
@@ -25,7 +25,9 @@ dependencies = [
     "pytest-asyncio (>=0.25.3,<0.26.0)",
     "aiosqlite (>=0.21.0,<0.22.0)",
     "pytest-cov (>=6.0.0,<7.0.0)",
-    "redis (>=5.2.1,<6.0.0)"
+    "redis (>=5.2.1,<6.0.0)",
+    "python-multipart (>=0.0.20,<0.0.21)",
+    "bcrypt (==4.0.1)"
 ]
 
 
@@ -43,4 +45,11 @@ asyncio_default_fixture_loop_scope = "function"
 [tool.poetry.group.dev.dependencies]
 sphinx = "^8.1.3"
 redis = "^5.2.1"
+
+[tool.poetry]
+name = "goit-pythonweb-hw-12"
+version = "0.1.0"
+description = "Contacts API"
+authors = ["Iryna Kyryllova <keira.kirillova@gmail.com>"]
+packages = [{ include = "src" }] 
 
